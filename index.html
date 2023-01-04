@@ -23,11 +23,10 @@
       font-weight: normal;
       font-size: 28px;
       line-height: 52px;
-      margin-bottom: 12px;
       background-color: lightyellow;
       display: inline-block;
-      margin-bottom: 36px;
-      transform: rotate(-2deg);
+      margin-bottom: 48px;
+      transform: rotate(-1deg);
     }
     p {
       line-height: 26px;
@@ -39,7 +38,7 @@
       line-height: 30px;
     }
     article {
-      margin-bottom: 36px;
+      margin-bottom: 48px;
     }
     a {
       text-decoration: none;
@@ -96,6 +95,13 @@
       left: 0;
       top: 0;
     }
+    .right {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .grey {
+      opacity: 0.7;
+    }
   </style>
   <title>xingchi's weblog</title>
 </head>
@@ -103,7 +109,36 @@
 <body>
   <h1>xingchi's weblog</h1>
 
-  <article>
+  <article class="grey">
+    <time>2023-1-4</time>
+    <p>中午从外面散完步回来，左边的牙龈还是肿痛的，心想着三四天了炎症还没消散。晚上吃完饭躺在沙发上，突然发觉牙龈不疼了。身体的恢复与痊愈让我感到惊讶。就好像一阵风来，门关上了，对，门就这么关上了。</p>
+  </article>
+  
+  <article id="18">
+    <time>2023-1-1</time>
+    <p>很多博客的框架，都在暗示，你需要写长文章，精心编排的那种。</p>
+    <p>而 twitter 类似的平台则刺激人 shitposting。</p>
+    <br />
+    <p>值得留意的： <a href="https://joinmastodon.org/" target="_blank">mastodon</a>, <a href="https://activitypub.rocks/" target="_blank">ActivityPub</a>, <a href="https://github.com/nostr-protocol/nostr" target="_blank">nostr</a>, <a href="https://rumsystem.net/" target="_blank">RumSystem</a></p>
+  </article>
+
+  <div>
+    <p>↑ 2023</p>
+    <hr />
+    <p>↓ 2022</p>
+  </div>
+
+  <article id="17" class="right">
+    <div>
+      <time>null</time>
+      <p>全上海的玻璃瓶都不会碎</p>
+      <p>诗则靠滴滴司机分行</p>
+      <p>花儿为什么那么红，洋葱也红</p>
+      <p>时间躺在农民的凉椅里</p>
+    </div>
+  </article>
+
+  <article id="16">
     <time>2022-12-17</time>
     <p><a href="https://www.tradingview.com/" target="_blank">TradingView</a> 的价格预测是一种写作吗？</p>
     <p>市场巨大、模糊、不断变化。</p>

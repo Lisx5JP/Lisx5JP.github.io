@@ -10,14 +10,17 @@
       margin: 0;
       padding: 0;
     }
+
     * {
       margin: 0;
       padding: 0;
     }
+
     body {
       padding: 12px;
       font-family: serif, "Source Han Serif CN";
     }
+
     h1 {
       opacity: 0.6;
       font-weight: normal;
@@ -28,36 +31,47 @@
       margin-bottom: 48px;
       transform: rotate(-1deg);
     }
+
     p {
       line-height: 26px;
       margin-bottom: 4px;
     }
+
     time {
       font-size: 14px;
       font-style: italic;
       line-height: 30px;
     }
+
     article {
       margin-bottom: 48px;
     }
+
     a {
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
     pre {
       border: 1px solid lightgrey;
       white-space: pre-wrap;
-      margin: 8px 0;
+      margin: 6px 0;
       display: inline-block;
-      padding: 6px;
+      padding: 8px 12px;
       border-radius: 4px;
       opacity: 0.9;
     }
+
     code {
       font-size: 14px;
+      border: 1px solid lightgrey;
+      padding: 2px 4px;
+      border-radius: 4px;
     }
+
     ul {
       padding-left: 18px;
     }
@@ -66,27 +80,34 @@
       max-width: 680px;
       overflow-x: auto;
     }
+
     .b-img {
       margin: 6px 0;
     }
+
     .max4 {
       max-width: 400px;
     }
+
     .max5 {
       max-width: 500px;
     }
+
     .max8 {
       max-width: 800px;
     }
+
     .iframe-wrapper {
       width: 600px;
       margin: 8px 0;
     }
+
     .iframe {
       position: relative;
       padding: 30% 45%;
       border: 1px solid lightgrey;
     }
+
     .iframe iframe {
       border: none;
       position: absolute;
@@ -95,19 +116,23 @@
       left: 0;
       top: 0;
     }
+
     .right {
       display: flex;
       justify-content: flex-end;
     }
+
     .grey {
       opacity: 0.7;
     }
+
     .blue {
       display: inline-block;
       opacity: 0.4;
       background-color: darkgrey;
       color: #fff;
     }
+
     .shadow:hover {
       background: no-repeat left url("media/imgs/leaf.jpg");
       background-size: contain;
@@ -120,17 +145,45 @@
 <body>
   <h1>xingchi's weblog</h1>
 
-  <article>
+  <article id="24">
+    <time>2023-6-1</time>
+    <p>看到这个<a href="https://bbs.archlinuxcn.org/viewtopic.php?id=13291" target="_blank">帖子</a>，才知道 wayland 下是可以在
+      chromium 和 vs code 里面用中文输入法的。</p>
+    <p>在 <code>~/.config/chromium-flag.conf</code> 中配置：</p>
+    <pre>--enable-features=UseOzonePlatform
+--ozone-platform=wayland
+--enable-wayland-ime
+--proxy-server="127.0.0.1:7890"</pre>
+    <p>在 <code>~/.config/code-flag.conf</code> 中配置：</p>
+    <pre>--enable-features=WaylandWindowDecorations
+--ozone-platform-hint=auto
+--gtk-version=4
+--enable-wayland-ime</pre>
+    <div>相关链接：<ul>
+        <li><a href="https://invent.kde.org/plasma/kwin/-/merge_requests/3403" target="_blank">Add text-input-v1
+            support</a></li>
+        <li><a
+            href="https://www.csslayer.info/wordpress/linux/use-plasma-5-24-to-type-in-alacritty-or-any-other-text-input-v3-client-with-fcitx-5-on-wayland/"
+            target="_blank">Use Plasma 5.24 to type in Alacritty (Or any other text-input-v3 client) with Fcitx 5 on
+            Wayland</a></li>
+        <li><a href="https://www.csslayer.info/wordpress/fcitx-dev/chrome-state-of-input-method-on-wayland/"
+            target="_blank">Chrome/Chromium 今日 Wayland 输入法支持现状</a></li>
+      </ul>
+    </div>
+
+  </article>
+
+  <article id="24">
     <time>2023-2-22</time>
     <p>）））<a href="https://www.xiaoyuzhoufm.com/podcast/6374b82925a03ef67c125caf" target="_blank">果皮书店的播客（小宇宙）</a></p>
   </article>
 
-  <article>
+  <article id="23">
     <time>2023-2-11</time>
     <p>天黑得等到一个人开灯的时候才能发现。</p>
   </article>
 
-  <article>
+  <article id="22">
     <time>null</time>
     <br />
     <div class="blue">
@@ -139,27 +192,31 @@
     </div>
   </article>
 
-  <article class="md">
+  <article id="21" class="md">
     <time>2023-2-4</time>
-    <p>坐在马桶上看手机，看了一会突然发现垃圾桶里有一个二维码，但因为手机上的文本，我的感受是：我在那样一个空间（卫生间）里，已经待了好一会，久到我甚至有些走神，甚至发呆，而在我呆的时候，我看到了一个二维码，随即我便有了去扫它的冲动。不过很快，另一个念头冲走了这个念头：在很多影视作品中，有时候要交代一条信息，这个信息是在人物坐在马桶上发现的，而往往这个时候，垃圾桶的特写是很快切入的。不会给影片中的人物很多时间去走神、去发呆、去不知道自己为什么坐在那里。</p>
+    <p>
+      坐在马桶上看手机，看了一会突然发现垃圾桶里有一个二维码，但因为手机上的文本，我的感受是：我在那样一个空间（卫生间）里，已经待了好一会，久到我甚至有些走神，甚至发呆，而在我呆的时候，我看到了一个二维码，随即我便有了去扫它的冲动。不过很快，另一个念头冲走了这个念头：在很多影视作品中，有时候要交代一条信息，这个信息是在人物坐在马桶上发现的，而往往这个时候，垃圾桶的特写是很快切入的。不会给影片中的人物很多时间去走神、去发呆、去不知道自己为什么坐在那里。
+    </p>
   </article>
 
-  <article class="shadow">
+  <article id="20" class="shadow">
     <time>2023-1-8</time>
     <p>在听<a href="https://zoominnight.bandcamp.com/album/tropical-feedback" target="_blank">“热带反馈”</a>时房间里出现了树影。</p>
   </article>
 
-  <article class="grey">
+  <article id="19" class="grey">
     <time>2023-1-4</time>
     <p>中午从外面散完步回来，左边的牙龈还是肿痛的，心想着三四天了炎症还没消散。晚上吃完饭躺在沙发上，突然发觉牙龈不疼了。身体的恢复与痊愈让我感到惊讶。就好像一阵风来，门关上了，对，门就这么关上了。</p>
   </article>
-  
+
   <article id="18">
     <time>2023-1-1</time>
     <p>很多博客的框架，都在暗示，你需要写长文章，精心编排的那种。</p>
     <p>而 twitter 类似的平台则刺激人 shitposting。</p>
     <br />
-    <p>值得留意的： <a href="https://joinmastodon.org/" target="_blank">mastodon</a>, <a href="https://activitypub.rocks/" target="_blank">ActivityPub</a>, <a href="https://github.com/nostr-protocol/nostr" target="_blank">nostr</a>, <a href="https://rumsystem.net/" target="_blank">RumSystem</a></p>
+    <p>值得留意的： <a href="https://joinmastodon.org/" target="_blank">mastodon</a>, <a href="https://activitypub.rocks/"
+        target="_blank">ActivityPub</a>, <a href="https://github.com/nostr-protocol/nostr" target="_blank">nostr</a>, <a
+        href="https://rumsystem.net/" target="_blank">RumSystem</a></p>
   </article>
 
   <div>
@@ -213,7 +270,8 @@
 
   <article id="11">
     <time>2022-12-13</time>
-    <p>周天的时候去明室听了高加索放利盖蒂（György Ligeti）的黑胶，回来后看了一个利盖蒂的纪录片。利盖蒂是犹太人，二战期间进过集中营。视频中他说后来在剧场之类的地方听到人群的掌声，他还是会觉得恐怖，因为对他来说那是极权的记忆。</p>
+    <p>周天的时候去明室听了高加索放利盖蒂（György
+      Ligeti）的黑胶，回来后看了一个利盖蒂的纪录片。利盖蒂是犹太人，二战期间进过集中营。视频中他说后来在剧场之类的地方听到人群的掌声，他还是会觉得恐怖，因为对他来说那是极权的记忆。</p>
   </article>
 
   <article id="10" class="md">
@@ -222,10 +280,12 @@
       <small>#乡镇音乐</small>
     </p>
     <p>前些天想起这首歌，就又搜了下听，还是觉得挺好听的：安又琪2004年的《你好周杰伦》。</p>
-    <p>顺势想干脆把很多小时候听的有意思的歌整理下，创建一个 #乡镇音乐 的 tag，回忆下高一之前听到过的歌，这算是第一个。高一之前我家的电视机还是黑白的，所以可以说是“黑白乡镇音乐”了。不过这个和乡村音乐没关系，和什么社会研究没关系，和音乐类型也没关系，只是很私人的情感记录。</p>
+    <p>顺势想干脆把很多小时候听的有意思的歌整理下，创建一个 #乡镇音乐 的
+      tag，回忆下高一之前听到过的歌，这算是第一个。高一之前我家的电视机还是黑白的，所以可以说是“黑白乡镇音乐”了。不过这个和乡村音乐没关系，和什么社会研究没关系，和音乐类型也没关系，只是很私人的情感记录。</p>
     <div class="iframe-wrapper">
       <div class="iframe">
-        <iframe src="https://player.bilibili.com/player.html?aid=542728969&page=1&as_wide=1&high_quality=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+        <iframe src="https://player.bilibili.com/player.html?aid=542728969&page=1&as_wide=1&high_quality=1&autoplay=0"
+          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
       </div>
     </div>
   </article>
@@ -248,7 +308,9 @@
     <div class="max8">
       <p>拖延是人的一种行为，作为人：可能会跳起来，可能会捂着脸，又或许突然唱起歌，也就是说，拖延是有作用的。</p>
       <p>在我看来，拖延是为了躲避焦虑。上周的我就在工作上十分拖延，而焦虑只是暂时被避开了，但实际上是在累积的。所以其实拖延的过程中充满了痛苦...</p>
-      <p>...远程工作意味着形式上的更加自由，但在内容上，可不一定。我已经远程工作了一个月，远程取消了线下工作时人和人之间的很多连接，很多看似用处不大的连接，现在想来，其实也是有作用的。一些废话、打招呼、经过、开玩笑什么的，是“线下工作”的构成。这是我之前没有料想到的。</p>
+      <p>
+        ...远程工作意味着形式上的更加自由，但在内容上，可不一定。我已经远程工作了一个月，远程取消了线下工作时人和人之间的很多连接，很多看似用处不大的连接，现在想来，其实也是有作用的。一些废话、打招呼、经过、开玩笑什么的，是“线下工作”的构成。这是我之前没有料想到的。
+      </p>
       <p>之前工作时我问东西都比较勤快，但现在我甚至开始憋着，这是为什么？</p>
     </div>
   </article>
@@ -256,12 +318,22 @@
   <article id="6">
     <time>2022-12-3</time>
     <div class="md">
-      <p>昨天听了洪铁基（Hong Chulki）和柳汉吉（Ryu Hankil）的一张 CD <a href="https://erstwhilerecords.bandcamp.com/album/objets-infernaux" target="_blank">《Objets Infernaux》</a>，好啊。<a href="http://www.balloonnneedle.com/chulki.html"
-          target="_blank">Balloon & Needle</a> 上面有洪铁基的简介，所以他的名字韩文是홍철기。柳汉吉的韩文是류한길。这里是<a href="http://www.rockbundartmuseum.org/cn/artist/overview/ba7dwz" target="_blank">上海外滩美术馆</a>对洪铁基的简介。上面提到的“气球与针”的网站里有很多乐手的链接，可以花掉你好几个小时了。</p>
-      <p>撒把芥末有一篇关于洪铁基的<a href="https://mp.weixin.qq.com/s/JyE1_XwqytbXj_DFRzqr_Q" target="_blank">《你们都在纪念拉图尔》</a>，里面还提到了2010年写的<a href="https://mp.weixin.qq.com/s/L3FiXURGKS2dFjqTDAMGNA" target="_blank">《首尔当代即兴回顾》</a>，<a href="https://radio-enemy.bandcamp.com/album/old-radio-enemy-002-yan-jun-new-impro-music-and-recent-encounter" target="_blank">敌台002期</a>可听。</p>
+      <p>昨天听了洪铁基（Hong Chulki）和柳汉吉（Ryu Hankil）的一张 CD <a
+          href="https://erstwhilerecords.bandcamp.com/album/objets-infernaux" target="_blank">《Objets
+          Infernaux》</a>，好啊。<a href="http://www.balloonnneedle.com/chulki.html" target="_blank">Balloon & Needle</a>
+        上面有洪铁基的简介，所以他的名字韩文是홍철기。柳汉吉的韩文是류한길。这里是<a href="http://www.rockbundartmuseum.org/cn/artist/overview/ba7dwz"
+          target="_blank">上海外滩美术馆</a>对洪铁基的简介。上面提到的“气球与针”的网站里有很多乐手的链接，可以花掉你好几个小时了。</p>
+      <p>撒把芥末有一篇关于洪铁基的<a href="https://mp.weixin.qq.com/s/JyE1_XwqytbXj_DFRzqr_Q"
+          target="_blank">《你们都在纪念拉图尔》</a>，里面还提到了2010年写的<a href="https://mp.weixin.qq.com/s/L3FiXURGKS2dFjqTDAMGNA"
+          target="_blank">《首尔当代即兴回顾》</a>，<a
+          href="https://radio-enemy.bandcamp.com/album/old-radio-enemy-002-yan-jun-new-impro-music-and-recent-encounter"
+          target="_blank">敌台002期</a>可听。</p>
       <img class="max4 b-img" src="https://lisx5jp.oss-cn-hangzhou.aliyuncs.com/objects-infernaux.jpeg"
         alt="objects-infernaux">
-      <p>柳汉吉是 FEN 的成员，颜峻有写一篇采访<a href="https://subjam.org/blog/478" target="_blank">《柳汉吉：“每个哲学家都是合成器”》</a>，撒把芥末微店也有他的小册子<a href="https://weidian.com/fastorder.html?itemID=4450378791&code=041SJuGa1DE5nE0RjdHa1pbrY53SJuGR&state=f2f_pay" target="_blank">《黑暗王子》</a>。访谈里柳汉吉说：“地球就是一个从太空中过滤出来的实体。人类的现实就是经过了带宽过滤的噪音。”，很有意思。</p>
+      <p>柳汉吉是 FEN 的成员，颜峻有写一篇采访<a href="https://subjam.org/blog/478"
+          target="_blank">《柳汉吉：“每个哲学家都是合成器”》</a>，撒把芥末微店也有他的小册子<a
+          href="https://weidian.com/fastorder.html?itemID=4450378791&code=041SJuGa1DE5nE0RjdHa1pbrY53SJuGR&state=f2f_pay"
+          target="_blank">《黑暗王子》</a>。访谈里柳汉吉说：“地球就是一个从太空中过滤出来的实体。人类的现实就是经过了带宽过滤的噪音。”，很有意思。</p>
       <p>柳汉吉主持的 the manual 厂牌应该是不做了，网站（http://www.themanual.co.kr）也不在了。</p>
       <p>贴一些链接吧：</p>
       <ul>

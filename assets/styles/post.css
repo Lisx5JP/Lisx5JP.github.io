@@ -1,0 +1,97 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 12px;
+  font-family: serif, "Source Han Serif CN";
+}
+
+.content {
+  display: block;
+  margin-left: 420px;
+  max-width: 480px;
+}
+
+h1 {
+  margin-bottom: 48px;
+}
+
+#home {
+  opacity: 0.6;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 52px;
+  background-color: lightyellow;
+  display: inline-block;
+  margin-bottom: 8px;
+  transform: rotate(-1deg);
+}
+
+#title {
+  opacity: 0.7;
+  font-size: 21px;
+  display: inline-block;
+}
+
+p {
+  line-height: 28px;
+}
+
+time {
+  font-size: 14px;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+pre {
+  border: 1px solid lightgrey;
+  white-space: pre-wrap;
+  margin: 8px 0;
+  /* display: inline-block; */
+  padding: 6px;
+  border-radius: 4px;
+  opacity: 0.9;
+  max-width: 560px;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+.iframe-wrapper {
+  width: 600px;
+  margin: 8px 0;
+}
+
+.iframe {
+  position: relative;
+  padding: 30% 45%;
+  border: 1px solid lightgrey;
+}
+
+.iframe iframe {
+  border: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}

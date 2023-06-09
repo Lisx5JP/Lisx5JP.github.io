@@ -10,7 +10,7 @@ html {
 
 body {
   padding: 12px;
-  font-family: serif, "Source Han Serif CN";
+  font-family: "Source Han Serif CN", serif;
 }
 
 h1 {
@@ -25,14 +25,14 @@ h1 {
 }
 
 p {
-  line-height: 26px;
-  margin-bottom: 4px;
+  line-height: 28px;
+  margin-bottom: 8px;
 }
 
 time {
   font-size: 14px;
   font-style: italic;
-  line-height: 30px;
+  line-height: 36px;
 }
 
 article {
@@ -58,14 +58,14 @@ pre {
 }
 
 code {
-  font-size: 14px;
   border: 1px solid lightgrey;
-  padding: 2px 4px;
+  padding: 1px 2px;
   border-radius: 4px;
 }
 
 ul {
   padding-left: 18px;
+  margin: 4px 0 16px 0;
 }
 
 .md {

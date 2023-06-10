@@ -67,7 +67,7 @@ SuperCollider 的插件 https://github.com/supercollider/sc3-plugins 。
 
 ### cadence
 
-JACK 的工具箱，嗯... 同样不知道有哪些功能。
+https://kx.studio/Applications:Cadence ，JACK 的工具箱，嗯... 同样不知道有哪些功能。
 
 ## 使用
 

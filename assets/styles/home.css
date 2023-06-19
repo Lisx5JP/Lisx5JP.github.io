@@ -74,6 +74,14 @@ ul {
   margin: 4px 0 16px 0;
 }
 
+blockquote {
+  border-left: 4px solid lightgrey;
+  padding-left: 8px;
+  margin: 12px 0 12px 12px;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
 .md {
   max-width: 680px;
   overflow-x: auto;

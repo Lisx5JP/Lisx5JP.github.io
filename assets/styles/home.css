@@ -68,6 +68,7 @@ code {
   border-radius: 4px;
   font-size: 12px;
   background-color: rgba(0, 0, 0, 0.01);
+  font-family: Consolas, monospace;
 }
 
 ul {

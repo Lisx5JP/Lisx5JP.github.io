@@ -10,7 +10,7 @@ html {
 
 body {
   padding: 12px;
-  font-family: "Source Han Serif CN", serif;
+  font-family: "Source Han Serif CN", Georgia, serif;
 }
 
 .content {
@@ -97,6 +97,7 @@ code {
   background-color: rgba(0, 0, 0, 0.01);
   opacity: 0.9;
   font-size: 12px;
+  font-family: Consolas, monospace;
 }
 
 pre code {

@@ -142,7 +142,7 @@ blockquote {
 }
 
 .shadow:hover {
-  background: no-repeat left url("assets/imgs/leaf.jpg");
+  background: no-repeat left url("https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/leaf.jpg");
   background-size: contain;
   opacity: 0.9;
 }

@@ -71,6 +71,6 @@ https://kx.studio/Applications:Cadence ，JACK 的工具箱，嗯... 同样不�
 
 ## 使用
 
-SC 跑起来了，后面就都好说了。不过如果只让 SC 跑起来，应该只需要把 JACK 配置好就行，应该只需要安装好 SuperCollider、JACK2 和 qtjackctl 就行。
+SC 跑起来了，后面就都好说了。不过如果只让 SC 跑起来，应该只需要安装好 SuperCollider、JACK2 和 qtjackctl， 并且配置好 JACK 就行。
 
 后面就需要开始学 SC 怎么用了，软件逻辑什么的， cheers！

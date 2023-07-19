@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../assets/styles/post.css" rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/imgs/favicon.svg" />
+  <title>xingchi: 不用 Mac 来打包 Flutter 的 iOS APP</title>
+</head>
+
+<body>
+  <h1><span id="home"><a class="back" href="../index.html">xingchi's weblog / </a></span><span
+      id="title">不用 Mac 来打包 Flutter 的 iOS APP</span></h1>
+
+  <article id="32">
+    <time>2023-7-19</time>
+    <p>没有苹果电脑来开发，但有一个能开机的苹果手机，所以找到了 <a href="https://github.com/Appollo-CLI/Appollo" target="_blank">Appollo CLI</a>
+      来打包 Flutter 的 iOS 版应用。</p>
+    <p>1. 安装：</p>
+    <pre><code>pipx install appollo</code></pre>
+    <p>2. 注册账号：</p>
+    <pre><code>appollo signup</code></pre>
+    <p>3. 设置苹果开发者账号：</p>
+    <pre><code>appollo apple add</code></pre>
+    <p>参考文档：<a
+        href="https://appollo.readthedocs.io/en/master/tutorial/6_configure_app_store_connect.html">https://appollo.readthedocs.io/en/master/tutorial/6_configure_app_store_connect.html</a>
+    </p>
+    <p>4. 设置 App ID：</p>
+    <p>我是直接关联的已有的一个 ID， 所以使用的是：</p>
+    <pre><code>appollo app import</code></pre>
+    <p>如果是新建一个 ID， 需要命令：</p>
+    <pre><code>appollo app mk</code></pre>
+    <p>参考文档：<a
+        href="https://appollo.readthedocs.io/en/master/tutorial/7_how_to_make_an_app_id_using_appollo.html">https://appollo.readthedocs.io/en/master/tutorial/7_how_to_make_an_app_id_using_appollo.html</a>
+    </p>
+    <p>5. 然后就可以构建 ipa 文件了，通过苹果手机扫码或者访问链接来直接下载安装。</p>
+    <pre><code>appollo build start --build-type ad-hoc</code>
+  <code>appollo build ipa</code></pre>
+    <p>不熟悉 iOS 应用的开发，这么多配置还是挺绕的，不过应该是没有 Mac 的情况下比较方便的方式了。</p>
+  </article>
+</body>
+
+</html>

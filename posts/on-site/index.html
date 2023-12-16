@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/assets/styles/post.css" rel="stylesheet">
+  <script type="module" src="/assets/md-block.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hash = window.location.hash.split("#")[1];
+      const items = ["2020-1-1", "2023-9-1", "2023-9-2", "2023-9-3"]
+      const lastest = items.length - 1;
+      let index = hash ? hash : lastest;
+
+      const block = document.getElementsByClassName("content")[0];
+      block.src = items[index] + ".md"; // default content
+      const nextBtn = document.getElementById("next");
+      const prevBtn = document.getElementById("prev");
+
+      if (!hash) {
+        window.location.hash = lastest;
+        nextBtn.disabled = true;
+      }
+      if (+hash === lastest) {
+        nextBtn.disabled = true;
+      }
+      if (+hash === 0) {
+        prevBtn.disabled = true;
+        document.getElementById("about").style.display = "block";
+      }
+
+      nextBtn.addEventListener("click", () => {
+        index++;
+        if (index >= items.length - 1) {
+          index = items.length - 1;
+          nextBtn.disabled = true;
+        }
+        document.getElementById("about").style.display = "none";
+        prevBtn.disabled = false;
+        updateContent();
+      });
+
+      prevBtn.addEventListener("click", () => {
+        index--;
+        if (index <= 0) {
+          index = 0;
+          prevBtn.disabled = true;
+          document.getElementById("about").style.display = "block";
+        }
+        nextBtn.disabled = false;
+        updateContent();
+      });
+
+      function updateContent() {
+        window.location.hash = `#${index}`;
+        const name = items[index];
+        block.src = name + ".md";
+      }
+    });
+  </script>
+  <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
+  <title>xingchi: 现场</title>
+</head>
+
+<body>
+  <h1><span id="home"><a class="back" href="/index.html">xingchi's weblog / </a></span><span id="title">现场</span>
+  </h1>
+
+  <md-block class="content"></md-block>
+
+  <div style="margin-left: 420px; margin-bottom: 84px;">
+    <p id="about" style="display: none;"><a href="./about.html">关于</a></p>
+    <button id="prev" type="button" style="padding: 0 12px">
+      < </button>
+        <button id="next" type="button" style="padding: 0 12px"> > </button>
+  </div>
+</body>
+
+</html>

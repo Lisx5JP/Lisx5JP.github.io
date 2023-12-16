@@ -16,7 +16,8 @@ body {
 .content {
   display: block;
   margin-left: 420px;
-  max-width: 480px;
+  max-width: 520px;
+  padding-bottom: 64px;
 }
 
 @media screen and (max-width: 800px) {
@@ -40,7 +41,8 @@ h2 {
 h3 {
   font-size: 16px;
   opacity: 0.8;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
+  margin-top: 48px;
 }
 
 #home {
@@ -62,7 +64,7 @@ h3 {
 
 p {
   line-height: 24px;
-  margin-bottom: 12px;
+  margin-bottom: 28px;
 }
 
 time {
@@ -120,6 +122,10 @@ blockquote {
   margin: 12px 0 12px 12px;
   opacity: 0.8;
   font-size: 14px;
+}
+
+em {
+  opacity: 0.8;
 }
 
 .iframe-wrapper {

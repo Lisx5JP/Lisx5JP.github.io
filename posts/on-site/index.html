@@ -6,6 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/assets/styles/post.css" rel="stylesheet">
+  <style>
+    .content {
+      padding-bottom: 18px;
+    }
+
+    .arrows {
+      margin-bottom: 120px;
+      text-align: center;
+
+      button {
+        &:first-of-type {
+          margin-right: 16px;
+        }
+      }
+
+      @media screen and (min-width: 960px) {
+        margin-left: 420px;
+        margin-bottom: 84px;
+        text-align: left;
+
+        button {
+          &:first-of-type {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  </style>
   <script type="module" src="/assets/md-block.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -70,7 +98,7 @@
 
   <md-block class="content"></md-block>
 
-  <div style="margin-left: 420px; margin-bottom: 84px;">
+  <div class="arrows">
     <p id="about" style="display: none;"><a href="./about.html">关于</a></p>
     <button id="prev" type="button" style="padding: 0 12px">
       < </button>

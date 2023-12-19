@@ -7,13 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/assets/styles/home.css" rel="stylesheet">
   <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuEl = document.getElementById("menu");
+      menuEl.addEventListener('click', () => {
+        document.getElementById("aside").style.display = "block";
+      });
+
+      const closeEl = document.getElementById("close");
+      closeEl.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById("aside").style.display = "none";
+      })
+    });
+  </script>
   <title>xingchi's weblog</title>
 </head>
 
 <body>
   <h1>xingchi's weblog</h1>
 
-  <aside>
+  <span id="menu">&#9776;</span>
+
+  <aside id="aside">
+    <span id="close">&#10005;</span>
     <section class="post-list">
       <h3>📌 长文章</h3>
       <ul>

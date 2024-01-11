@@ -147,3 +147,46 @@ em {
   left: 0;
   top: 0;
 }
+
+/* generate github readme like table sytles */
+/* GitHub-like Markdown Table Styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #d0d7de;
+}
+
+table th {
+  font-weight: 600;
+  background-color: #f6f8fa;
+}
+
+table tr:nth-child(even) {
+  background-color: #f6f8fa;
+}
+
+/* Optional: Add a bit more styling to match GitHub's look */
+table thead th {
+  vertical-align: bottom;
+}
+
+table tbody td {
+  vertical-align: top;
+}
+
+table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+table tbody tr:last-child {
+  border-bottom: 1px solid #d0d7de;
+}

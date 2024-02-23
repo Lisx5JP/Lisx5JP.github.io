@@ -176,6 +176,10 @@ blockquote {
   margin: 6px 0;
 }
 
+.max3 {
+  max-width: 300px;
+}
+
 .max4 {
   max-width: 400px;
 }

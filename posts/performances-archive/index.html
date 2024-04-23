@@ -6,16 +6,100 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/assets/styles/post.css" rel="stylesheet">
-  <script type="module" src="/assets/md-block.js"></script>
+  <style>
+    details {
+      margin: 1rem 0;
+    }
+
+    summary {
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btns {
+      button {
+        margin-right: 0.5rem;
+        padding: 0 0.5rem;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
   <title>xingchi: 演出信息归档</title>
 </head>
 
 <body>
-  <h1><span id="home"><a class="back" href="/index.html">xingchi's weblog / </a></span><span
-      id="title">演出信息归档</span></h1>
+  <h1><span id="home"><a class="back" href="/index.html">xingchi's weblog / </a></span><span id="title">演出信息归档</span>
+  </h1>
 
-  <md-block src="index.md"></md-block>
+  <div id="app">
+    <div class="btns">
+      <span style="margin-right: 0.5rem;">筛选</span>
+      <button @click="setFilter('北京')">北京</button>
+      <button @click="setFilter('上海')">上海</button>
+      <button @click="setFilter('广州')">广州</button>
+      <button @click="setFilter('武汉')">武汉</button>
+      <button @click="setFilter('深圳')">深圳</button>
+      <button @click="setFilter('兰州')">兰州</button>
+      <button @click="setFilter('')">全部</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th v-for="header in headers" :key="header">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in filteredData" :key="item.name">
+          <td>{{ item.date }}</td>
+          <td>{{ item.city }}</td>
+          <td>{{ item.series }}</td>
+          <td>{{ item.venue }}</td>
+          <td>{{ item.name }}</td>
+          <td><a :href="item.link" target="_blank">Link</a></td>
+          <td><a :href="item.permalink" target="_blank">Permalink</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
+
+<script>
+  const { createApp, ref, onMounted, computed } = Vue
+
+  createApp({
+    setup() {
+      const headers = ['日期', '城市', '系列', '场馆', '演出', '链接', '永久链接'];
+      const data = ref([]);
+      const currentFilter = ref('');
+
+      onMounted(async () => {
+        const response = await fetch('./data.json');
+        const json = await response.json();
+        data.value = json.list;
+      });
+
+      const filteredData = computed(() => {
+        if (!currentFilter.value) {
+          return data.value;
+        }
+        return data.value.filter(item => item.city === currentFilter.value);
+      });
+
+      const setFilter = (city) => {
+        console.log(city);
+        currentFilter.value = city;
+      };
+
+      return {
+        headers,
+        filteredData,
+        setFilter
+      }
+    }
+  }).mount('#app')
+</script>
 
 </html>

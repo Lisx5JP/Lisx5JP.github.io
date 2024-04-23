@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AES Encryption</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <style>
+    body {
+      font-family: monospace;
+    }
+
+    input,
+    textarea {
+      width: 350px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    button {
+      margin-right: 0.5rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    #togglePassword {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: none;
+      background: none;
+      outline: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>AES-256 Encrypt & Decrypt</h2>
+  <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Enter your password">
+    <button id="togglePassword" style="cursor: pointer;">🔒</button>
+  </div>
+  <textarea id="inputText" rows="8" placeholder="Enter text here..."></textarea>
+  <textarea id="outputText" rows="8" placeholder="Result..."></textarea>
+  <button onclick="encrypt()">Encrypt</button>
+  <button onclick="decrypt()">Decrypt</button>
+
+  <div style="margin-top: 3rem;"><a href="/">返回</a></div>
+
+</body>
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function () {
+    const passwordInput = document.getElementById('password');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      this.textContent = '🔓';
+    } else {
+      passwordInput.type = 'password';
+      this.textContent = '🔒';
+    }
+  });
+
+  function encrypt() {
+    const password = document.getElementById('password').value;
+    const inputText = document.getElementById('inputText').value;
+
+    const encrypted = CryptoJS.AES.encrypt(inputText, password);
+    document.getElementById('outputText').value = encrypted.toString();
+  }
+
+  function decrypt() {
+    const password = document.getElementById('password').value;
+    const encryptedText = document.getElementById('inputText').value;
+
+    const decrypted = CryptoJS.AES.decrypt(encryptedText, password);
+    const originalText = decrypted.toString(CryptoJS.enc.Utf8);
+    document.getElementById('outputText').value = originalText;
+  }
+</script>
+
+</html>

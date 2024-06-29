@@ -56,6 +56,11 @@ h3 {
   transform: rotate(-1deg);
 }
 
+#home a {
+  color: black;
+  text-decoration: none;
+}
+
 #title {
   opacity: 0.8;
   font-size: 21px;
@@ -74,11 +79,12 @@ time {
 }
 
 a {
-  text-decoration: none;
+  color: #1B75D0;
+  text-decoration: underline;
 }
 
-a:hover {
-  text-decoration: underline;
+a:visited {
+  color: #1B75D0;
 }
 
 pre {

@@ -63,6 +63,14 @@ aside {
     border-radius: 0 !important;
   }
 
+  aside a {
+    text-decoration: none;
+  }
+
+  aside a:hover {
+    text-decoration: underline;
+  }
+
   #menu {
     display: none;
   }
@@ -84,7 +92,7 @@ h1 {
 }
 
 .post-list {
-  opacity: 0.4;
+  opacity: 0.7;
   font-size: 0.85rem;
 
   > h3 {
@@ -96,10 +104,6 @@ h1 {
       margin-bottom: 4px;
     }
   }
-}
-
-.post-list:hover {
-  opacity: 0.9;
 }
 
 p {
@@ -120,11 +124,12 @@ article {
 }
 
 a {
-  text-decoration: none;
+  color: #1B75D0;
+  text-decoration: underline;
 }
 
-a:hover {
-  text-decoration: underline;
+a:visited {
+  color: #1B75D0;
 }
 
 pre {

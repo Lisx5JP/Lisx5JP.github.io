@@ -7,14 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/assets/styles/post.css" rel="stylesheet">
   <style>
-    details {
-      margin: 1rem 0;
-    }
-
-    summary {
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
+    #app {
+      margin-bottom: 8rem;
     }
 
     .btns {
@@ -41,6 +35,7 @@
 
   <div id="app">
     <div class="btns">
+      <span>默认：</span>
       <button @click="setFilter('')">全部</button>
     </div>
     
@@ -90,7 +85,6 @@
       <button @click="setFilter('s', '破晓')">破晓</button>
       <button @click="setFilter('s', '听阈')">听阈</button>
       <button @click="setFilter('s', 'RESO')">RESO</button>
-      <button @click="setFilter('s', '毛躁')">毛躁</button>
       <button @click="setFilter('s', '毛躁')">毛躁</button>
       <button @click="setFilter('s', '噪音星期一')">噪音星期一</button>
       <button @click="setFilter('s', '荒音祭')">荒音祭</button>
@@ -143,7 +137,7 @@
         if (currentFilter.value.type === 's')
           return data.value.filter(item => item.name.includes(currentFilter.value.name));
         else if (currentFilter.value.type === 'c')
-          return data.value.filter(item => item.city === currentFilter.value);
+          return data.value.filter(item => item.city === currentFilter.value.name);
       });
 
       const setFilter = (type, name) => {

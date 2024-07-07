@@ -20,30 +20,85 @@
     .btns {
       button {
         margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
         padding: 0 0.5rem;
+        border-radius: 0;
       }
+    }
+
+    .selected {
+      background-color: lightyellow;
     }
   </style>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
-  <title>xingchi: 演出信息归档</title>
+  <title>xingchi: 一些演出信息归档</title>
 </head>
 
 <body>
-  <h1><span id="home"><a class="back" href="/index.html">xingchi's weblog / </a></span><span id="title">演出信息归档</span>
+  <h1><span id="home"><a class="back" href="/index.html">xingchi's weblog / </a></span><span id="title">一些演出信息归档</span>
   </h1>
 
   <div id="app">
     <div class="btns">
-      <span style="margin-right: 0.5rem;">筛选</span>
-      <button @click="setFilter('北京')">北京</button>
-      <button @click="setFilter('上海')">上海</button>
-      <button @click="setFilter('广州')">广州</button>
-      <button @click="setFilter('武汉')">武汉</button>
-      <button @click="setFilter('深圳')">深圳</button>
-      <button @click="setFilter('兰州')">兰州</button>
       <button @click="setFilter('')">全部</button>
     </div>
+    
+    <div class="btns" style="margin-top: 1rem;">
+      <span>筛选城市：</span>
+      <button @click="setFilter('c', '北京')">北京</button>
+      <button @click="setFilter('c', '上海')">上海</button>
+      <button @click="setFilter('c', '广州')">广州</button>
+      <button @click="setFilter('c', '武汉')">武汉</button>
+      <button @click="setFilter('c', '深圳')">深圳</button>
+      <button @click="setFilter('c', '兰州')">兰州</button>
+    </div>
+
+    <div class="btns" style="margin-top: 1rem;">
+      <span>筛选系列：</span>
+      <button @click="setFilter('s', '丰收节')">丰收节</button>
+      <button @click="setFilter('s', '演一下巴')">演一下巴</button>
+      <button @click="setFilter('s', 'NOISHANGHAI')">NOISHANGHAI</button>
+      <button @click="setFilter('s', '客家母汤')">客家母汤</button>
+      <button @click="setFilter('s', '五金微现场')">五金微现场</button>
+      <button @click="setFilter('s', '尾巴聚会')">尾巴聚会</button>
+      <button @click="setFilter('s', '各演各的')">各演各的</button>
+      <button @click="setFilter('s', '愚者的音乐')">愚者的音乐</button>
+      <button @click="setFilter('s', '你和我')">你和我</button>
+      <button @click="setFilter('s', '大幻')">大幻</button>
+      <button @click="setFilter('s', '季噪音')">四季噪音</button>
+      <button @click="setFilter('s', '龟音')">龟音</button>
+      <button @click="setFilter('s', 'Noise+')">Noise+</button>
+      <button @click="setFilter('s', '室内微波')">室内微波</button>
+      <button @click="setFilter('s', '顺风派对')">顺风派对</button>
+      <button @click="setFilter('s', '一把噪音')">一把噪音</button>
+      <button @click="setFilter('s', '阿喽小现场')">阿喽小现场</button>
+      <button @click="setFilter('s', '燥眠夜')">燥眠夜</button>
+      <button @click="setFilter('s', '密集音乐会')">密集音乐会</button>
+      <button @click="setFilter('s', '不是音乐会')">不是音乐会</button>
+      <button @click="setFilter('s', '甲马')">甲马</button>
+      <button @click="setFilter('s', '朋朋')">朋朋</button>
+      <button @click="setFilter('s', '客厅巡演')">客厅巡演</button>
+      <button @click="setFilter('s', 'Entry Exit')">Entry Exit</button>
+      <button @click="setFilter('s', '器乐音景')">器乐音景</button>
+      <button @click="setFilter('s', '耳鸣')">耳鸣</button>
+      <button @click="setFilter('s', 'Improvisation')">Improvisation</button>
+      <button @click="setFilter('s', '好再来')">好再来</button>
+      <button @click="setFilter('s', '杂草')">杂草</button>
+      <button @click="setFilter('s', '原料噪音现场')">原料噪音现场</button>
+      <button @click="setFilter('s', 'Vital')">Vital</button>
+      <button @click="setFilter('s', '破晓')">破晓</button>
+      <button @click="setFilter('s', '听阈')">听阈</button>
+      <button @click="setFilter('s', 'RESO')">RESO</button>
+      <button @click="setFilter('s', '毛躁')">毛躁</button>
+      <button @click="setFilter('s', '毛躁')">毛躁</button>
+      <button @click="setFilter('s', '噪音星期一')">噪音星期一</button>
+      <button @click="setFilter('s', '荒音祭')">荒音祭</button>
+      <button @click="setFilter('s', '水陆观音')">水陆观音</button>
+      <button @click="setFilter('s', 'Mini Midi')">Mini Midi</button>
+    </div>
+
+    <p style="margin-top: 1rem;">当前数目：<span style="color: green;">{{ filteredData.length }}</span></p>
 
     <table>
       <thead>
@@ -73,7 +128,7 @@
     setup() {
       const headers = ['日期', '城市', '系列', '场馆', '演出', '链接', '永久链接'];
       const data = ref([]);
-      const currentFilter = ref('');
+      const currentFilter = ref({ type: '', name: '' });
 
       onMounted(async () => {
         const response = await fetch('./data.json');
@@ -82,15 +137,28 @@
       });
 
       const filteredData = computed(() => {
-        if (!currentFilter.value) {
+        if (!currentFilter.value.name) {
           return data.value;
         }
-        return data.value.filter(item => item.city === currentFilter.value);
+        if (currentFilter.value.type === 's')
+          return data.value.filter(item => item.name.includes(currentFilter.value.name));
+        else if (currentFilter.value.type === 'c')
+          return data.value.filter(item => item.city === currentFilter.value);
       });
 
-      const setFilter = (city) => {
-        console.log(city);
-        currentFilter.value = city;
+      const setFilter = (type, name) => {
+        console.log(type, name);
+        currentFilter.value = { type, name };
+        // set button style to selected
+        const buttons = document.querySelectorAll('.btns button');
+
+        buttons.forEach(button => {
+          if (button.textContent === name) {
+            button.classList.add('selected');
+          } else {
+            button.classList.remove('selected');
+          }
+        });
       };
 
       return {

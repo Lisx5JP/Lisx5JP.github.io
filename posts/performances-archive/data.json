@@ -1,5 +1,112 @@
 {
+  "cities": [
+    "北京",
+    "上海",
+    "广州",
+    "武汉",
+    "深圳",
+    "兰州",
+    "惠州",
+    "海南"
+  ],
+  "series": [
+    "丰收节",
+    "演一下巴",
+    "NOISHANGHAI",
+    "客家母汤",
+    "五金微现场",
+    "尾巴聚会",
+    "各演各的",
+    "愚者的音乐",
+    "你和我",
+    "大幻",
+    "四季噪音",
+    "龟音",
+    "Noise+",
+    "室内微波",
+    "顺风派对",
+    "一把噪音",
+    "阿喽小现场",
+    "燥眠夜",
+    "密集音乐会",
+    "不是音乐会",
+    "甲马",
+    "朋朋",
+    "客厅巡演",
+    "Entry Exit",
+    "器乐音景",
+    "耳鸣",
+    "Improvisation",
+    "好再来",
+    "杂草",
+    "原料噪音现场",
+    "Vital",
+    "破晓",
+    "听阈",
+    "RESO",
+    "毛躁",
+    "噪音星期一",
+    "荒音祭",
+    "水陆观音",
+    "Mini Midi",
+    "废墟巡演",
+    "白练腾空"
+  ],
   "list": [
+    {
+      "date": "",
+      "city": "",
+      "series": "",
+      "venue": "",
+      "name": "",
+      "link": "",
+      "permalink": ""
+    },
+    {
+      "date": "2021/1/16",
+      "city": "广州",
+      "series": "客家母汤",
+      "venue": "高速桥底",
+      "name": "客家母汤 3.0",
+      "link": "https://mp.weixin.qq.com/s/BxPg0E1NfrbSi_eCmB11ZA",
+      "permalink": "https://archive.ph/ZKLqf"
+    },
+    {
+      "date": "2021/5/15",
+      "city": "广州",
+      "series": "雜草",
+      "venue": "奥音 / Sunny Heart / ok center / 秘密地点",
+      "name": "2021 雜草Fest",
+      "link": "https://mp.weixin.qq.com/s/9tWGoMxdbGXJ0Z4pRkTN3Q",
+      "permalink": "https://archive.ph/WlOMU"
+    },
+    {
+      "date": "2022/8/12",
+      "city": "广州",
+      "series": "",
+      "venue": "Yistclub",
+      "name": "中东跳舞夜",
+      "link": "https://mp.weixin.qq.com/s/JZGBTBYVDpYGWC4GWFP3zg",
+      "permalink": "https://archive.ph/yd7Jk"
+    },
+    {
+      "date": "2022/11/12",
+      "city": "惠州",
+      "series": "白练腾空",
+      "venue": "龙山",
+      "name": "上龙山，继续白练腾空",
+      "link": "https://mp.weixin.qq.com/s/NwQXZT72UcoN9ZwQyNCymA",
+      "permalink": "https://archive.ph/ozc1P"
+    },
+    {
+      "date": "2023/3/14 ~ 2023/3/18",
+      "city": "海南",
+      "series": "废墟巡演",
+      "venue": "海南各地洞穴废墟",
+      "name": "废墟巡演｜海南·噪音现场",
+      "link": "https://mp.weixin.qq.com/s/e3CFPrrVkFmrEG2EU6c1Zg",
+      "permalink": "https://archive.ph/sEUda"
+    },
     {
       "date": "2024/1/6",
       "city": "武汉",
@@ -273,7 +380,7 @@
     {
       "date": "2023/4/17",
       "city": "北京",
-      "series": "",
+      "series": "四季噪音",
       "venue": "北京-shcool酒吧",
       "name": "2023春季噪音",
       "link": "https://mp.weixin.qq.com/s/MRbwLsFPCfBfzeAekf_ABA",
@@ -361,7 +468,7 @@
       "permalink": "https://archive.is/e1NnM"
     },
     {
-      "date": "2022年7月底 ~ 8月中",
+      "date": "2022/7/23 ~ 8/20",
       "city": "上海",
       "series": "",
       "venue": "上海-明室书房",
@@ -372,7 +479,7 @@
     {
       "date": "2022/4/25",
       "city": "北京",
-      "series": "",
+      "series": "四季噪音",
       "venue": "北京-school酒吧",
       "name": "春季噪音",
       "link": "https://mp.weixin.qq.com/s/6QR34A0XysOW_vNRv_V43A",
@@ -399,7 +506,7 @@
     {
       "date": "2022/3/15",
       "city": "北京",
-      "series": "",
+      "series": "四季噪音",
       "venue": "北京-school酒吧",
       "name": "春季噪音 #1",
       "link": "https://mp.weixin.qq.com/s/BnOrhvGst4-Ztz-Jut5KMQ",
@@ -426,7 +533,7 @@
     {
       "date": "2021/7/20",
       "city": "北京",
-      "series": "",
+      "series": "四季噪音",
       "venue": "北京-school酒吧",
       "name": "2021夏季噪音 #2",
       "link": "https://mp.weixin.qq.com/s/dnS2nJytTbVIBdouIYT3pQ",
@@ -435,7 +542,7 @@
     {
       "date": "2021/6/7",
       "city": "北京",
-      "series": "",
+      "series": "四季噪音",
       "venue": "北京-school酒吧",
       "name": "2021夏季噪音 #1",
       "link": "https://mp.weixin.qq.com/s/GbzqPLpj_fwKkR4dhcyvNg",

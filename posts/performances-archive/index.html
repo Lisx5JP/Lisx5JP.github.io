@@ -38,61 +38,26 @@
       <span>默认：</span>
       <button @click="setFilter('')">全部</button>
     </div>
-    
+
     <div class="btns" style="margin-top: 1rem;">
       <span>筛选城市：</span>
-      <button @click="setFilter('c', '北京')">北京</button>
-      <button @click="setFilter('c', '上海')">上海</button>
-      <button @click="setFilter('c', '广州')">广州</button>
-      <button @click="setFilter('c', '武汉')">武汉</button>
-      <button @click="setFilter('c', '深圳')">深圳</button>
-      <button @click="setFilter('c', '兰州')">兰州</button>
+      <button v-for="item in citiesList" :key="item" @click="setFilter('c', item)">
+        {{ item }}
+      </button>
     </div>
 
     <div class="btns" style="margin-top: 1rem;">
       <span>筛选系列：</span>
-      <button @click="setFilter('s', '丰收节')">丰收节</button>
-      <button @click="setFilter('s', '演一下巴')">演一下巴</button>
-      <button @click="setFilter('s', 'NOISHANGHAI')">NOISHANGHAI</button>
-      <button @click="setFilter('s', '客家母汤')">客家母汤</button>
-      <button @click="setFilter('s', '五金微现场')">五金微现场</button>
-      <button @click="setFilter('s', '尾巴聚会')">尾巴聚会</button>
-      <button @click="setFilter('s', '各演各的')">各演各的</button>
-      <button @click="setFilter('s', '愚者的音乐')">愚者的音乐</button>
-      <button @click="setFilter('s', '你和我')">你和我</button>
-      <button @click="setFilter('s', '大幻')">大幻</button>
-      <button @click="setFilter('s', '季噪音')">四季噪音</button>
-      <button @click="setFilter('s', '龟音')">龟音</button>
-      <button @click="setFilter('s', 'Noise+')">Noise+</button>
-      <button @click="setFilter('s', '室内微波')">室内微波</button>
-      <button @click="setFilter('s', '顺风派对')">顺风派对</button>
-      <button @click="setFilter('s', '一把噪音')">一把噪音</button>
-      <button @click="setFilter('s', '阿喽小现场')">阿喽小现场</button>
-      <button @click="setFilter('s', '燥眠夜')">燥眠夜</button>
-      <button @click="setFilter('s', '密集音乐会')">密集音乐会</button>
-      <button @click="setFilter('s', '不是音乐会')">不是音乐会</button>
-      <button @click="setFilter('s', '甲马')">甲马</button>
-      <button @click="setFilter('s', '朋朋')">朋朋</button>
-      <button @click="setFilter('s', '客厅巡演')">客厅巡演</button>
-      <button @click="setFilter('s', 'Entry Exit')">Entry Exit</button>
-      <button @click="setFilter('s', '器乐音景')">器乐音景</button>
-      <button @click="setFilter('s', '耳鸣')">耳鸣</button>
-      <button @click="setFilter('s', 'Improvisation')">Improvisation</button>
-      <button @click="setFilter('s', '好再来')">好再来</button>
-      <button @click="setFilter('s', '杂草')">杂草</button>
-      <button @click="setFilter('s', '原料噪音现场')">原料噪音现场</button>
-      <button @click="setFilter('s', 'Vital')">Vital</button>
-      <button @click="setFilter('s', '破晓')">破晓</button>
-      <button @click="setFilter('s', '听阈')">听阈</button>
-      <button @click="setFilter('s', 'RESO')">RESO</button>
-      <button @click="setFilter('s', '毛躁')">毛躁</button>
-      <button @click="setFilter('s', '噪音星期一')">噪音星期一</button>
-      <button @click="setFilter('s', '荒音祭')">荒音祭</button>
-      <button @click="setFilter('s', '水陆观音')">水陆观音</button>
-      <button @click="setFilter('s', 'Mini Midi')">Mini Midi</button>
+      <button v-for="item in seriesList" :key="item" @click="setFilter('s', item)">
+        {{ item }}
+      </button>
     </div>
 
-    <p style="margin-top: 1rem;">当前数目：<span style="color: green;">{{ filteredData.length }}</span></p>
+    <p style="margin-top: 1rem;">
+      当前数目：<span style="color: green;">
+        {{ filteredData.length }}
+      </span>
+    </p>
 
     <table>
       <thead>
@@ -103,12 +68,9 @@
       <tbody>
         <tr v-for="item in filteredData" :key="item.name">
           <td>{{ item.date }}</td>
-          <td>{{ item.city }}</td>
-          <td>{{ item.series }}</td>
           <td>{{ item.venue }}</td>
-          <td>{{ item.name }}</td>
-          <td><a :href="item.link" target="_blank">Link</a></td>
-          <td><a :href="item.permalink" target="_blank">Permalink</a></td>
+          <td><a :href="item.link" target="_blank">{{ item.name }}</a></td>
+          <td><a :href="item.permalink" target="_blank">Permalink 🡥</a></td>
         </tr>
       </tbody>
     </table>
@@ -120,14 +82,27 @@
 
   createApp({
     setup() {
-      const headers = ['日期', '城市', '系列', '场馆', '演出', '链接', '永久链接'];
+      const headers = ['日期', '场地', '演出', '永久链接'];
       const data = ref([]);
+      const seriesList = ref([]);
+      const citiesList = ref([]);
       const currentFilter = ref({ type: '', name: '' });
+
+      function sortEventsByDate(events) {
+        return events.sort((a, b) => {
+          const dateA = new Date(a.date.split('~')[0]);
+          const dateB = new Date(b.date.split('~')[0]);
+
+          return dateB - dateA;
+        });
+      }
 
       onMounted(async () => {
         const response = await fetch('./data.json');
         const json = await response.json();
-        data.value = json.list;
+        data.value = sortEventsByDate((json.list).slice(1));
+        seriesList.value = json.series;
+        citiesList.value = json.cities;
       });
 
       const filteredData = computed(() => {
@@ -135,15 +110,13 @@
           return data.value;
         }
         if (currentFilter.value.type === 's')
-          return data.value.filter(item => item.name.includes(currentFilter.value.name));
+          return data.value.filter(item => item.name.includes(currentFilter.value.name) || item.series === currentFilter.value.name);
         else if (currentFilter.value.type === 'c')
           return data.value.filter(item => item.city === currentFilter.value.name);
       });
 
       const setFilter = (type, name) => {
-        console.log(type, name);
         currentFilter.value = { type, name };
-        // set button style to selected
         const buttons = document.querySelectorAll('.btns button');
 
         buttons.forEach(button => {
@@ -158,6 +131,8 @@
       return {
         headers,
         filteredData,
+        seriesList,
+        citiesList,
         setFilter
       }
     }

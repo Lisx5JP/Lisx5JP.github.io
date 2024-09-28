@@ -84,6 +84,7 @@ export class MarkdownElement extends HTMLElement {
       langPrefix: "language-",
       mangle: false,
       headerIds: false,
+      breaks: true,
     });
 
     marked.use({ renderer: this.renderer });

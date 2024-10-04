@@ -202,7 +202,10 @@ export class MarkdownBlock extends MarkdownElement {
   }
 
   _parse() {
-    return marked.parse(this._mdContent);
+    // marked.js multiple line breaks
+    // https://github.com/markedjs/marked/issues/190#issuecomment-607285947
+    const processedContent = this._mdContent.replace(/\n(?=\n)/g, "<br>");
+    return marked.parse(processedContent);
   }
 
   static renderer = Object.assign(

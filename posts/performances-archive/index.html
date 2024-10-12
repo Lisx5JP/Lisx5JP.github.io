@@ -17,6 +17,9 @@
         margin-bottom: 0.5rem;
         padding: 0 0.5rem;
         border-radius: 0;
+        border-width: 2px;
+        border-color: transparent lightgray lightgray transparent;
+        background-color: #e5e5e5;
       }
     }
 
@@ -98,11 +101,14 @@
       }
 
       onMounted(async () => {
-        const response = await fetch('./data.json');
-        const json = await response.json();
-        data.value = sortEventsByDate((json.list).slice(1));
-        seriesList.value = json.series;
-        citiesList.value = json.cities;
+        const resBaseInfo = await fetch('./data.json');
+        const baseInfo = await resBaseInfo.json();
+        seriesList.value = baseInfo.series;
+        citiesList.value = baseInfo.cities;
+
+        const resList = await fetch('https://opensheet.elk.sh/1H5MJFM7E4Vdt5Mq18aOHvtUG14vre_03KMkqXXNqOIE/list');
+        const listData = await resList.json();
+        data.value = sortEventsByDate((listData));
       });
 
       const filteredData = computed(() => {

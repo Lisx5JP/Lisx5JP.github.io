@@ -13,6 +13,38 @@ export const URLs = {
     "https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.es.min.js",
 };
 
+const newlineBreaksExtension = {
+  name: 'newlineBreaks',
+  start(src) { return src.indexOf('\n'); },
+  tokenizer(src) {
+    const match = src.match(/^\n+/);
+    if (match) {
+      return {
+        type: 'newlineBreaks',
+        raw: match[0],
+        text: match[0],
+      };
+    }
+  },
+  renderer(token) {
+    // https://github.com/markedjs/marked/issues/190#issuecomment-607285947
+    return token.text.replace(/\n(?=\n)/g, "\n\n<br/>");
+  },
+};
+
+const newlineBreaks = {
+  extensions: [
+    {
+      ...newlineBreaksExtension,
+      level: 'block',
+    },
+    {
+      ...newlineBreaksExtension,
+      level: 'inline',
+    },
+  ],
+};
+
 // Fix indentation
 function deIndent(text) {
   let indent = text.match(/^[\r\n]*([\t ]+)/);
@@ -88,6 +120,7 @@ export class MarkdownElement extends HTMLElement {
     });
 
     marked.use({ renderer: this.renderer });
+    marked.use(newlineBreaks); // https://github.com/markedjs/marked/issues/3466#issuecomment-2378235513
 
     let html = this._parse();
 
@@ -202,10 +235,7 @@ export class MarkdownBlock extends MarkdownElement {
   }
 
   _parse() {
-    // marked.js multiple line breaks
-    // https://github.com/markedjs/marked/issues/190#issuecomment-607285947
-    const processedContent = this._mdContent.replace(/\n(?=\n)/g, "<br>");
-    return marked.parse(processedContent);
+    return marked.parse(this._mdContent);
   }
 
   static renderer = Object.assign(

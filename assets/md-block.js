@@ -235,7 +235,13 @@ export class MarkdownBlock extends MarkdownElement {
   }
 
   _parse() {
-    return marked.parse(this._mdContent);
+    let content = this._mdContent;
+    content = this._removeReverseStatusBlock(content);
+    return marked.parse(content);
+  }
+
+  _removeReverseStatusBlock(content) {
+    return content.replace(/---\s*\nreverseStatus: true\s*\n(?:\n*)?---/g, '');
   }
 
   static renderer = Object.assign(

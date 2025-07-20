@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AES-256 + Argon2id Encryptor</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/argon2-browser/1.18.0/argon2-bundled.min.js"></script>
+  <style>
+    body {
+      font-family: monospace;
+    }
+
+    input,
+    textarea {
+      width: 350px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    button {
+      margin-right: 0.5rem;
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    #togglePassword {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: none;
+      background: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    #status {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>AES-256 + Argon2id Encryptor</h2>
+  <div class="password-wrapper">
+    <input type="password" id="password" placeholder="Enter your password">
+    <button id="togglePassword">🔒</button>
+  </div>
+  <textarea id="inputText" rows="8" placeholder="Enter text here..."></textarea>
+  <textarea id="outputText" rows="8" placeholder="Result..."></textarea>
+  <button onclick="encrypt()">Encrypt</button>
+  <button onclick="decrypt()">Decrypt</button>
+  <button onclick="resetAll()">Reset</button>
+  <div id="status"></div>
+
+  <div style="margin-top: 3rem;"><a href="/">返回</a></div>
+
+  <script>
+    document.getElementById('togglePassword').addEventListener('click', function () {
+      const passwordInput = document.getElementById('password');
+      passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+      this.textContent = passwordInput.type === 'password' ? '🔒' : '🔓';
+    });
+
+    async function deriveKey(password, saltHex) {
+      const start = performance.now();
+      const result = await argon2.hash({
+        pass: password,
+        salt: saltHex,
+        type: argon2.ArgonType.Argon2id,
+        hashLen: 32,
+        time: 15,
+        mem: 524288,
+        parallelism: 4
+      });
+      const end = performance.now();
+      const durationSec = ((end - start) / 1000).toFixed(1);
+      return {
+        key: CryptoJS.enc.Hex.parse(result.hashHex),
+        duration: durationSec
+      };
+    }
+
+    async function encrypt() {
+      const status = document.getElementById('status');
+      const output = document.getElementById('outputText');
+      output.value = '';
+      status.textContent = '⏳ Deriving key...';
+
+      try {
+        const password = document.getElementById('password').value;
+        const inputText = document.getElementById('inputText').value;
+        const salt = CryptoJS.lib.WordArray.random(16);
+        const iv = CryptoJS.lib.WordArray.random(16);
+
+        const { key, duration } = await deriveKey(password, salt.toString(CryptoJS.enc.Hex));
+        status.textContent = `✅ Key derived in ${duration} seconds`;
+
+        const encrypted = CryptoJS.AES.encrypt(inputText, key, { iv: iv });
+
+        const payload = {
+          salt: salt.toString(CryptoJS.enc.Base64),
+          iv: iv.toString(CryptoJS.enc.Base64),
+          ciphertext: encrypted.toString()
+        };
+
+        output.value = btoa(JSON.stringify(payload));
+      } catch (e) {
+        output.value = '❌ Encryption failed.';
+        status.textContent = '';
+      }
+    }
+
+    async function decrypt() {
+      const status = document.getElementById('status');
+      const output = document.getElementById('outputText');
+      output.value = '';
+      status.textContent = '⏳ Deriving key...';
+
+      try {
+        const password = document.getElementById('password').value;
+        const encryptedPayload = document.getElementById('inputText').value;
+
+        const decoded = JSON.parse(atob(encryptedPayload));
+        const salt = CryptoJS.enc.Base64.parse(decoded.salt).toString(CryptoJS.enc.Hex);
+        const iv = CryptoJS.enc.Base64.parse(decoded.iv);
+        const ciphertext = decoded.ciphertext;
+
+        const { key, duration } = await deriveKey(password, salt);
+        status.textContent = `✅ Key derived in ${duration} seconds`;
+
+        const decrypted = CryptoJS.AES.decrypt(ciphertext, key, { iv: iv });
+        const originalText = decrypted.toString(CryptoJS.enc.Utf8);
+
+        if (!originalText) throw new Error('Decryption failed.');
+        output.value = originalText;
+      } catch (e) {
+        output.value = '❌ Failed to decrypt. Maybe wrong password or format.';
+        status.textContent = '';
+      }
+    }
+
+    function resetAll() {
+      document.getElementById('password').value = '';
+      document.getElementById('inputText').value = '';
+      document.getElementById('outputText').value = '';
+      document.getElementById('status').textContent = '';
+    }
+  </script>
+</body>
+
+</html>

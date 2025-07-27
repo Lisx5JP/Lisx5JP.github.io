@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      opacity: 0.9;
+      padding-left: 0.5rem;
+      font-size: 0.875rem;
+      font-family: Georgia, serif;
+
+      &::-webkit-scrollbar {
+        width: 1em;
+      }
+    }
+
+    .content {
+      display: inline-block;
+      height: 70vh;
+      overflow-y: scroll;
+      padding-right: 0.75rem;
+      border-left: 1px dashed grey;
+      border-bottom: 1px dashed grey;
+      padding-top: 1rem;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: lightgrey;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .content {
+        width: 80%;
+      }
+    }
+
+    p {
+      line-height: 1.5;
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+    }
+
+    ul {
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      line-height: 1.5;
+      margin-bottom: 0.25rem;
+    }
+
+    a {
+      color: #1B75D0;
+      text-decoration: underline;
+      font-family: Consolas, Courier, monospace;
+    }
+
+    a:visited {
+      color: #1B75D0;
+    }
+
+    .content img {
+      max-width: 80%;
+    }
+  </style>
+  <script type="module" src="/assets/md-block.js"></script>
+  <link rel="shortcut icon" href="../assets/imgs/favicon.svg" />
+  <title>ideas - xingchi</title>
+</head>
+
+<body>
+  <p style="font-size: 1.125rem;">ideas</p>
+  <md-block class="content" src="https://f003.backblazeb2.com/file/xingchi-notes/ideas.md"></md-block>
+</body>
+
+</html>

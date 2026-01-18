@@ -162,6 +162,31 @@ function extractSlugAndBody(body) {
   return { slug, body: cleaned };
 }
 
+function convertMediaLinks(content) {
+  if (!content) {
+    return content;
+  }
+  let updated = content.replace(
+    /(!?\[[^\]]*?\]\(([^)]+?\.(mp3|m4a|wav|ogg))\))/gi,
+    (match, _full, url) => {
+      if (match.startsWith("![")) {
+        return match;
+      }
+      return `<audio controls src="${url}"></audio>`;
+    },
+  );
+  updated = updated.replace(
+    /(!?\[[^\]]*?\]\(([^)]+?\.(mp4|webm|ogg))\))/gi,
+    (match, _full, url) => {
+      if (match.startsWith("![")) {
+        return match;
+      }
+      return `<video controls src="${url}"></video>`;
+    },
+  );
+  return updated;
+}
+
 function buildSource(remote, bucketPath) {
   if (bucketPath && bucketPath.includes(":")) {
     return bucketPath;
@@ -308,6 +333,7 @@ async function main() {
       usedResourceIds.add(id);
       return `${assetWebRoot}/${id}${ext || ""}`;
     });
+    const withAudio = convertMediaLinks(withLinks);
 
     const frontMatterLines = [
       "---",
@@ -327,7 +353,7 @@ async function main() {
     const frontMatter = frontMatterLines.join("\n");
 
     const outputPath = path.join(outputDir, `${slug}.md`);
-    await fsp.writeFile(outputPath, `${frontMatter}${withLinks.trim()}\n`);
+    await fsp.writeFile(outputPath, `${frontMatter}${withAudio.trim()}\n`);
     noteCount += 1;
   }
 

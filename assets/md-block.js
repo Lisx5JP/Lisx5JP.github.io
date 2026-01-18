@@ -236,8 +236,13 @@ export class MarkdownBlock extends MarkdownElement {
 
   _parse() {
     let content = this._mdContent;
+    content = this._removeFrontMatter(content);
     content = this._removeReverseStatusBlock(content);
     return marked.parse(content);
+  }
+
+  _removeFrontMatter(content) {
+    return content.replace(/^---\s*\n[\s\S]*?\n---\s*\n?/, '');
   }
 
   _removeReverseStatusBlock(content) {

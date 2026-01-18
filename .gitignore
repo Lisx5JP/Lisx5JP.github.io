@@ -1,3 +1,5 @@
 .DS_Store
 .obsidian
 repomix-output.xml
+.env
+.joplin-sync

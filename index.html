@@ -1,507 +1,132 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>_xingchi</title>
+    <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        font: 20px/1.4 serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      a {
+        display: inline;
+        margin: 3em;
+      }
+      a:hover {
+        background: papayawhip;
+        font-weight: bold;
+      }
+      h1 {
+        font: italic 40px/1 sans-serif;
+        margin: 0;
+        text-shadow: 4px 4px #e8e8e8;
+      }
+      marquee {
+        width: 100%;
+      }
+      .tall {
+        height: 25em;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/assets/styles/home.css" rel="stylesheet">
-  <link rel="shortcut icon" href="/assets/imgs/favicon.svg" />
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const menuEl = document.getElementById("menu");
-      menuEl.addEventListener('click', () => {
-        document.getElementById("aside").style.display = "block";
-      });
+      /* Keep the "colorful block", but static and light grey (no marquee animation). */
+      #grey-block {
+        background-color: #e3e3e3;
+        border: 1px solid #d0d0d0;
+        position: relative;
+        overflow: hidden;
+        width: min(80ch, 92vw);
+        height: min(25em, 80vh);
+      }
 
-      const closeEl = document.getElementById("close");
-      closeEl.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.getElementById("aside").style.display = "none";
-      })
-    });
-  </script>
-  <title>_xingchi</title>
-</head>
+      /* Links live inside the block and get random absolute positions. */
+      #grey-block a {
+        position: absolute;
+        margin: 0;
+        padding: 0.15em 0.35em;
+        color: #111;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.75);
+      }
+    </style>
+  </head>
 
-<body>
-  <h1>X_C</h1>
+  <body>
+    <div id="grey-block" class="tall">
+      <a href="./mix.html">mix</a>
+      <a href="./logs.html">logs</a>
+      <a href="https://kangaroomurmur.cc" target="_blank" rel="noopener noreferrer">kangaroo murmur</a>
+      <a href="/posts/on-site/index.html">现场</a>
+      <a href="/posts/supercollider-glossary.html">SuperCollider 的词汇</a>
 
-  <span id="menu">&#9776;</span>
+      <a href="/toy/aes.html">AES Encryption</a>
+      <a href="/toy/aes-kdf.html">AES KDF Encryption</a>
 
-  <aside id="aside">
-    <span id="close">&#10005;</span>
-    <section class="post-list">
-      <h3>📌 进行中</h3>
-      <ul>
-        <li><a href="./mix.html">mix</a></li>
-        <li><a href="./logs.html">logs</a></li>
-        <li><a href="https://kangaroomurmur.cc" target="_blank">kangaroo murmur</a></li>
-        <li><a href="/posts/on-site/index.html">现场</a></li>
-        <li><a href="/posts/supercollider-glossary.html">SuperCollider 的词汇</a></li>
-      </ul>
-    </section>
-    <section class="post-list">
-      <h3>🪀 小玩意</h3>
-      <ul>
-        <li><a href="/toy/aes.html">AES Encryption</a></li>
-        <li><a href="/toy/aes-kdf.html">AES KDF Encryption</a></li>
-      </ul>
-    </section>
-    <section class="post-list">
-      <h3>🌄 一些照片</h3>
-      <ul>
-        <li><a href="/photos/">#01</a></li>
-      </ul>
-    </section>
-    <section class="post-list">
-      <h3>📡 Find Me</h3>
-      <ul>
-        <li><a href="https://www.youtube.com/@kangaroomurmur/playlists" target="_blank"
-            rel="noopener noreferrer">YouTube</a></li>
-        <li><a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-      </ul>
-    </section>
-  </aside>
+      <a href="/photos/">#01</a>
 
-  <article id="54">
-    <time>2025-7-27</time>
-    <p>搞多点，搞个 <a href="./mix.html">mix 页面</a></p>
-  </article>
+      <a
+        href="https://www.youtube.com/@kangaroomurmur/playlists"
+        target="_blank"
+        rel="noopener noreferrer"
+        >YouTube</a
+      >
+      <a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a>
 
-  <article id="53">
-    <time>2024-9-18</time>
-    <p>
-      得再轻松点，直接连接到 Obsidian 的笔记 <a href="./logs.html" style="text-decoration: none; color: inherit">logs</a>
-    </p>
-    <iframe src="./logs.html" frameborder="0" width="100%" height="460px"></iframe>
-  </article>
-
-  <article id="52">
-    <time>2024-6-29</time>
-    <p>很久没有更新内容，但好像一开始的劲儿也没了。</p>
-    <p>
-      最近晚上偶尔刚开始睡不着就会刷这个链接 <a href="https://wuqing.org/?random" target="_blank">https://wuqing.org/?random</a> ，wordpress
-      里 <code>?random</code> 这个设计挺好。</p>
-    <br>
-    <p style="width: 240px;">睡觉的时候，经常一闭上眼，脑子里就都是工作的内容。一察觉到这个，我就会觉得我脑子坏了，上班上坏了。</p>
-  </article>
-
-  <article id="51">
-    <time>2024-4-21</time>
-    <p>学到了一个词： <a href="https://www.noemamag.com/we-need-to-rewild-the-internet/" target="_blank">rewild 🡥</a></p>
-  </article>
-
-  <article id="50">
-    <time>2023-8-2</time>
-    <img width="420" style="border: 1px solid grey"
-      src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/the-moon.jpg" />
-    <p>到处都有亮光，但月亮还是不一样。</p>
-  </article>
-
-  <article id="49" class="max3">
-    <time>2023-7-15</time>
-    <p>高温天气会让时间变快吗？上周四的时候我以为当天是周二，以为只上了两天班。如果天气影响时间的速度，那赤道附近的人是不是时间总是很快，时光飞逝，他们那边更飞一些。</p>
-  </article>
-
-  <article id="48" class="max4">
-    <time>2023-7-31</time>
-    <p>一个男人站在一棵树下面，树旁边有三个路灯杆，风横着吹，已经晚上了，他在打电话。</p>
-  </article>
-
-  <article id="47">
-    <time>2023-8-2</time>
-    <p>三楼的电梯口有一辆自行车。</p><br>
-    <p>三楼的电梯口一出来就可以看到一辆靠墙的自行车。</p><br>
-    <p>三楼的电梯口一出来，一辆自行车总靠墙停放着。</p><br>
-    <p>电梯到三楼一打开门，对面的墙总是停放着一辆自行车。</p>
-    <p>这个句子应该还不够完备。</p>
-    <p>一打开门的时候，人会向外看，向外看第一眼就是这辆自行车。</p>
-    <p>再补充一下。</p>
-    <p>
-      那也不是第一眼，电梯门是向两边同时打开的，人的视线也好像有个展开的过程，这个过程如果可以绘制一个运动曲线，那就应该是那两扇门运动时的线型。这个过程同时是昏暗的，这是外部的昏暗，因为电梯里是有灯光的。昏暗的外部逐渐变亮的时候，一辆自行车出现了。它靠着墙，静止着，一些阴影和光线上的变化也在那个方向形成了。你看到这辆车，你往往会想到点什么，在你朝着那个什么想的瞬间，你迈出电梯间，拐向右边，自行车的形象消失在视线的转变中，你继续走，走向你要去的地方。
-    </p>
-  </article>
-
-  <article id="46">
-    <time>2023-8-13</time>
-    <p>工作越久越重复，就越容易让自己变成一个机器人。</p><br>
-    <p>我忘记了我是有意志的，很多时刻我可以通过调动自己的意志，暗示自己，来控制自己的行为的。</p><br>
-    <p>意志让自己清醒。</p>
-  </article>
-
-  <article id="45" style="font-weight: bold;">
-    <time>null</time>
-    <p>有时候喝一口水</p>
-    <p>只是为了咽一粒药</p>
-  </article>
-
-  <article id="44" class="max4">
-    <time>2023-8-25</time>
-    <p>听音乐真烦人啊，我被揉搓得几乎要开始感动了，看到网络上关注的人写得很好的句子，啊，那些词语啊，词语和词语啊，我几乎又要开始感动了，我双手抹抹脸，决定去厨房切两牙西瓜。</p>
-  </article>
-
-  <article id="43" class="max8">
-    <time>2023-8-29</time>
-    <p>
-      应该是一个河南的女人，带着两个女儿。大女儿先进来，走到我周围的区域，犹豫了一小下选了个位置，妈妈和小女儿紧随其后。妈妈落座后，大女儿便去靠窗的位置掏出书本做起了作业，她头发茂密但又稍显随意，表情是不快乐的。小女儿精力旺盛，只会说不多的话吧，妈妈开始打电话，用的方言，小女儿开始闹腾，要持有手机，大喊大声尖叫，星巴克里的人都朝这边看了。闹啊闹啊，妈妈显然是农村人，她把写作业叫写字，写字，这是我爷爷会用的词汇。「给她一只笔，叫她写字」，大女儿不理会。
-    </p>
-    <p>
-      在旁边，我感受着人的痛苦，这个不到四十岁的农村女人在城市里是这么格格不入，她被一个穿着讲究的女生质问，「这里不是幼儿园，请不要影响别人，如果你管不了孩子，请不在待在这里。」我感到难过，那个女人肯定也很难过，她的大女儿全程一言不发埋头奋笔，她怎么会快乐呢，她的敏感就是一种伤害。小女儿终于被满足了，她玩起手机，她为什么会这样呢？她了解痛苦吗？虽然她随时发狂哭泣。
-    </p>
-  </article>
-
-  <article id="42" class="max5">
-    <time>2023-9-5</time>
-    <p>无所事事地坐着，无所事事地待着，无所事事地走着，我已经很长时间没有这样去花掉时间了。我总是要准备做什么、在做什么、在想接下来做什么，长时间地，我都没有平静下来。</p>
-    <p>今天我无所事事地走在街上、坐在商场的台阶上，突然感觉到一种久违的放松，啊，原来人还可以这样度过时间呢。而我之前总是奔着一个什么。</p>
-  </article>
-
-  <article id="40">
-    <time>2023-9-27</time>
-    <p>午后，躺在床上，在楼上装修的电钻声里，嗡嗡嗡嗡噔噔噔，嗯嗯嗯，我渐渐入眠，我累了。</p>
-    <p>坐在电脑桌前，往往是到了傍晚，房间里的温度变得更高了，高过空调制造出的凉爽。我感到有汗，但从来没有变成流汗，汗从身体里出来，停在皮肤上，停在皮肤和衣服之间，衣服也吸掉了一些，衣服上有了潮气。我坐在那里，慢慢闷热起来。</p>
-  </article>
-
-  <article id="39">
-    <p><a href="./posts/tough.html">- 狠</a></p>
-  </article>
-
-  <article id="38">
-    <time>2023-9-24</time>
-    <p>房子租住了一年了，比一年前确实脏了一些、旧了一些，有些东西也坏了、破了。</p>
-  </article>
-
-  <article id="37" class="md">
-    <time>2023-10-19</time>
-    <p>在卧室闻到了炒辣椒的气味，一下就想起在老家，秋天已经凉下来了，我妈也会炒辣椒，很多时候和茄子一起炒。秋天的辣椒格外辣，茄子也要结束了，就连秋天恐怕也快要过去了。</p>
-  </article>
-
-  <article id="36">
-    <time>2023-11-1</time>
-    <p>最近每次在松江大学城地铁站对面打车都会打到彩色的车，今天是<span style="color: gold;">金</span>色的，浅浅的金，在夜里甚至不觉得是一种金色，就像是一种夜色。还打到过<span
-        style="color: blue;">蓝</span>色的、<span style="color: green;">绿</span>色的、<span
-        style="color: red;">红</span>色的。彩色的车多起来吧，满大街都是白色的黑色的，没意思。</p>
-  </article>
-
-  <p>....</p>
-  <p>...</p>
-  <p>..</p>
-  <p>.</p>
-
-  <article id="35">
-    <time>2024-2-23</time>
-    <p>不应该按照时间“顺序”排，这样会有负担，应该随便叠，然后注明“当时”的时间就好。</p>
-  </article>
-
-  <article id="34">
-    <time>2024-1-11</time>
-    <p>WIP</p>
-    <p>📌 <a href="https://kangaroomurmur.cc/archive/events.html">一些演出信息归档</a></p>
-    <p>📌 <a href="/posts/on-site/index.html">现场</a></p>
-    <p>📌 <a href="/posts/supercollider-glossary.html">SuperCollider 的词汇</a></p>
-  </article>
-
-  <div>
-    <p style="text-align: right;">↑ 2024</p>
-    <hr />
-    <p style="text-align: right;">↓ 2023</p>
-  </div>
-
-  <article id="33">
-    <time>2023-8-9</time>
-    <p>更新：屏幕宽度大于 960px 时会出现侧边栏 ☞</p>
-  </article>
-
-  <article id="32">
-    <time>2023-7-19</time>
-    <p>📌 <a href="/posts/build-flutter-ios-app-without-mac.html">不用 Mac 来打包 Flutter 的 iOS APP</a></p>
-  </article>
-
-  <article id="31">
-    <time>null</time>
-    <p>就像是两种人，就像是没有人</p>
-    <p>就像是我，就像是，没有我</p>
-  </article>
-
-  <article id="30">
-    <time>2023-7-1</time>
-    <p>巴尔的摩 Baltimore</p>
-    <img src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/S1.jpg" alt="the-wire-s1" height="210"
-      onclick="window.open(this.src)">
-    <img src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/S2.jpg" alt="the-wire-s2" height="210"
-      onclick="window.open(this.src)">
-    <img src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/S3.jpg" alt="the-wire-s3" height="210"
-      onclick="window.open(this.src)">
-    <img src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/S4.jpg" alt="the-wire-s4" height="210"
-      onclick="window.open(this.src)">
-    <img src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/S5.jpg" alt="the-wire-s5" height="210"
-      onclick="window.open(this.src)">
-  </article>
-
-  <article id="29">
-    <time>2023-6-19</time>
-    <p>最近得了带状疱疹，列一下丁香医生上对这个<a href="https://dxy.com/disease/779/detail/0#2" target="_blank">病因</a>的解释：</p>
-    <blockquote>
-      <p>多数患者（约 70%）在幼年时发过水痘，另约 30% 患者感染过水痘-带状疱疹病毒却未发过水痘，这在医学上叫做「隐性感染」。</p>
-      <p>这种病毒可以进入感觉神经末梢，然后沿感觉神经「向上走」（上行），到达感觉神经节或神经根并潜伏下来。</p>
-      <p>水痘治愈后，仍有部分潜伏在感觉神经节（神经细胞聚体的地方）内的病毒以休眠状态存在于体内。</p>
-      <p>
-        平时因为人体有较好的抵抗力，休眠状态的病毒不易被激活。但当人体抵抗力下降时，病毒可在神经节或神经根内被激活并再次生长繁殖，破坏人体的神经，导致剧烈的神经痛；并沿神经纤维移动到皮肤，使受侵犯的神经和皮肤产生强烈的炎症，产生带状疱疹。
-      </p>
-    </blockquote>
-    <p>看完会有些惊讶，这是一个游走在神经上的病毒，而且很有耐心。</p>
-  </article>
-
-  <article id="28">
-    <time>2023-6-14</time>
-    <p>📌 <a href="/posts/about-sound-art-xu-cheng-l3-2.html">徐程-关于声音艺术L3.2：后 Cage 时代的实验音乐场景</a></p>
-  </article>
-
-  <article id="27">
-    <time>2023-6-11</time>
-    <p>可是，</p>
-    <p>可是树</p>
-  </article>
-
-  <article id="26">
-    <time>2023-6-9</time>
-    <p>📌 <a href="/posts/use-supercollider-on-arch-linux.html">在 Arch Linux 上使用 SuperCollider</a></p>
-  </article>
-
-  <article id="25">
-    <time>2023-6-5</time>
-    <p>用了 <a href="https://github.com/leaverou/md-block" target="_blank">md-block</a> 来写 markdown, 比如<a
-        href="/posts/sample.html">这篇</a>测试的。</p>
-  </article>
-
-  <article id="24">
-    <time>2023-6-1</time>
-    <p>看到这个<a href="https://bbs.archlinuxcn.org/viewtopic.php?id=13291" target="_blank">帖子</a>，才知道 wayland 下是可以在
-      chromium 和 vs code 里面用中文输入法的。</p>
-    <p>在 <code>~/.config/chromium-flag.conf</code> 中配置：</p>
-    <pre>--enable-features=UseOzonePlatform
---ozone-platform=wayland
---enable-wayland-ime
---proxy-server="127.0.0.1:7890"</pre>
-    <p>在 <code>~/.config/code-flag.conf</code> 中配置：</p>
-    <pre>--enable-features=WaylandWindowDecorations
---ozone-platform-hint=auto
---gtk-version=4
---enable-wayland-ime</pre>
-    <div>相关链接：<ul>
-        <li><a href="https://invent.kde.org/plasma/kwin/-/merge_requests/3403" target="_blank">Add text-input-v1
-            support</a></li>
-        <li><a
-            href="https://www.csslayer.info/wordpress/linux/use-plasma-5-24-to-type-in-alacritty-or-any-other-text-input-v3-client-with-fcitx-5-on-wayland/"
-            target="_blank">Use Plasma 5.24 to type in Alacritty (Or any other text-input-v3 client) with Fcitx 5 on
-            Wayland</a></li>
-        <li><a href="https://www.csslayer.info/wordpress/fcitx-dev/chrome-state-of-input-method-on-wayland/"
-            target="_blank">Chrome/Chromium 今日 Wayland 输入法支持现状</a></li>
-      </ul>
+      <a href="./old-index.html">[ old index ]</a>
     </div>
 
-  </article>
+    <script>
+      (function () {
+        const el = document.getElementById("grey-block");
+        if (!el) return;
 
-  <article id="24">
-    <time>2023-2-22</time>
-    <p>）））<a href="https://www.xiaoyuzhoufm.com/podcast/6374b82925a03ef67c125caf" target="_blank">果皮书店的播客（小宇宙）</a></p>
-  </article>
+        // New color on each refresh.
+        const hue = Math.floor(Math.random() * 360);
+        const sat = Math.floor(35 + Math.random() * 45); // 35..80
+        const light = Math.floor(72 + Math.random() * 18); // 72..90
+        el.style.backgroundColor = `hsl(${hue} ${sat}% ${light}%)`;
 
-  <article id="23">
-    <time>2023-2-11</time>
-    <p>天黑得等到一个人开灯的时候才能发现。</p>
-  </article>
+        // Random positions on each refresh (always inside the block).
+        const links = Array.from(el.querySelectorAll("a"));
+        const pad = 12;
 
-  <article id="22">
-    <time>null</time>
-    <br />
-    <div class="blue">
-      <p>一只碗洗过之后还是一只碗，这只碗反复地被你使用，汤饭食物反复地降临到这只碗里。</p>
-      <p>这只碗洗过之后还是这只碗，这是它参与时空的方式，一只陶瓷碗。</p>
-    </div>
-  </article>
+        const place = () => {
+          const w = el.clientWidth;
+          const h = el.clientHeight;
 
-  <article id="21" class="md">
-    <time>2023-2-4</time>
-    <p>
-      坐在马桶上看手机，看了一会突然发现垃圾桶里有一个二维码，但因为手机上的文本，我的感受是：我在那样一个空间（卫生间）里，已经待了好一会，久到我甚至有些走神，甚至发呆，而在我呆的时候，我看到了一个二维码，随即我便有了去扫它的冲动。不过很快，另一个念头冲走了这个念头：在很多影视作品中，有时候要交代一条信息，这个信息是在人物坐在马桶上发现的，而往往这个时候，垃圾桶的特写是很快切入的。不会给影片中的人物很多时间去走神、去发呆、去不知道自己为什么坐在那里。
-    </p>
-  </article>
+          // Reset positions so sizes measure correctly.
+          links.forEach((a) => {
+            a.style.left = "0px";
+            a.style.top = "0px";
+          });
 
-  <article id="20" class="shadow">
-    <time>2023-1-8</time>
-    <p>在听<a href="https://zoominnight.bandcamp.com/album/tropical-feedback" target="_blank">“热带反馈”</a>时房间里出现了树影。</p>
-  </article>
+          requestAnimationFrame(() => {
+            links.forEach((a) => {
+              const aw = a.offsetWidth;
+              const ah = a.offsetHeight;
+              const maxX = Math.max(pad, w - aw - pad);
+              const maxY = Math.max(pad, h - ah - pad);
+              const x = pad + Math.random() * Math.max(0, maxX - pad);
+              const y = pad + Math.random() * Math.max(0, maxY - pad);
+              a.style.left = `${x}px`;
+              a.style.top = `${y}px`;
+            });
+          });
+        };
 
-  <article id="19" class="grey">
-    <time>2023-1-4</time>
-    <p>中午从外面散完步回来，左边的牙龈还是肿痛的，心想着三四天了炎症还没消散。晚上吃完饭躺在沙发上，突然发觉牙龈不疼了。身体的恢复与痊愈让我感到惊讶。就好像一阵风来，门关上了，对，门就这么关上了。</p>
-  </article>
-
-  <article id="18">
-    <time>2023-1-1</time>
-    <p>很多博客的框架，都在暗示，你需要写长文章，精心编排的那种。</p>
-    <p>而 twitter 类似的平台则刺激人 shitposting。</p>
-    <br />
-    <p>值得留意的： <a href="https://joinmastodon.org/" target="_blank">mastodon</a>, <a href="https://activitypub.rocks/"
-        target="_blank">ActivityPub</a>, <a href="https://github.com/nostr-protocol/nostr" target="_blank">nostr</a>, <a
-        href="https://rumsystem.net/" target="_blank">RumSystem</a></p>
-  </article>
-
-  <div>
-    <p>↑ 2023</p>
-    <hr />
-    <p>↓ 2022</p>
-  </div>
-
-  <article id="17" class="right">
-    <div>
-      <time>null</time>
-      <p>全上海的玻璃瓶都不会碎</p>
-      <p>诗则靠滴滴司机分行</p>
-      <p>花儿为什么那么红，洋葱也红</p>
-      <p style="text-decoration: line-through;">时间躺在农民的凉椅里</p>
-    </div>
-  </article>
-
-  <article id="16">
-    <time>2022-12-17</time>
-    <p><a href="https://www.tradingview.com/" target="_blank">TradingView</a> 的价格预测是一种写作吗？</p>
-    <p>市场巨大、模糊、不断变化。</p>
-    <p>这些语言和数据构成的话语，是什么？</p>
-  </article>
-
-  <article id="15">
-    <time>null</time>
-    <p>如果在说话的时候变得激动起来，这说明什么呢？</p>
-    <p>较长时间的激动后，声音也变得哑了些 —— 身体已经和说话前不一样了。</p>
-    <p>：这就是浩客（hulk），不需要好莱坞。</p>
-  </article>
-
-  <article id="14" class="max5">
-    <time>2022-12-17</time>
-    <p>看了电影《星际穿越》，嗯... 很好的电影吗？好像也不是。但我还是喜欢看飞船飞过土星、黑洞什么的场景。</p>
-    <p>小学的时候看星际旅行指南的纪录片，感慨于不同星球的差异，那些描述就像虚构的一样。我在电视机前想象着这些虚构。</p>
-    <p>白天小贾放了一个片子，Annie Ernaux 的。很多家庭录像，全程的旁白，不用力地、平缓但有真气，这是写作的能力。</p>
-  </article>
-
-  <article id="13">
-    <time>2022-12-15</time>
-    <p>用 html 写东西，文本的字符和 html 的标签都需要手打，也就是这些字符像是平等了，它们成为一个整体。</p>
-    <p>当然 markdown 写东西的时候也会用一些标签，但更多是指示性的，并且一个段落，也不用写明一个 <code>&lt;p&gt;</code> 标签。</p>
-    <p>所以这种代码和文本混合的方式，对于写作本身有影响吗？</p>
-  </article>
-
-  <article id="12" class="max4">
-    <time>null</time>
-    <p>在一些国家，孩子们打针的时候，大人们会鼓励他们哭，说爱哭才是坚强的小孩。所以接种疫苗时，医务室里哭声一片。遇到不哭的，大人和医生都会安慰他说：没事的，哭吧，你看那些小朋友都哭了，哭吧，哭吧，很快就会打完的。</p>
-  </article>
-
-  <article id="11">
-    <time>2022-12-13</time>
-    <p>周天的时候去明室听了高加索放利盖蒂（György
-      Ligeti）的黑胶，回来后看了一个利盖蒂的纪录片。利盖蒂是犹太人，二战期间进过集中营。视频中他说后来在剧场之类的地方听到人群的掌声，他还是会觉得恐怖，因为对他来说那是极权的记忆。</p>
-  </article>
-
-  <article id="10" class="md">
-    <time>2022-12-10</time>
-    <p>
-      <small>#乡镇音乐</small>
-    </p>
-    <p>前些天想起这首歌，就又搜了下听，还是觉得挺好听的：安又琪2004年的《你好周杰伦》。</p>
-    <p>顺势想干脆把很多小时候听的有意思的歌整理下，创建一个 #乡镇音乐 的
-      tag，回忆下高一之前听到过的歌，这算是第一个。高一之前我家的电视机还是黑白的，所以可以说是“黑白乡镇音乐”了。不过这个和乡村音乐没关系，和什么社会研究没关系，和音乐类型也没关系，只是很私人的情感记录。</p>
-    <div class="iframe-wrapper">
-      <div class="iframe">
-        <iframe src="https://player.bilibili.com/player.html?aid=542728969&page=1&as_wide=1&high_quality=1&autoplay=0"
-          scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-      </div>
-    </div>
-  </article>
-
-  <article id="9">
-    <time>2022-12-7</time>
-    <p>创造。</p>
-    <p>创造和再现的关系？通过反复地再现，催生出创造。一种冲动。</p>
-  </article>
-
-  <article id="8">
-    <time>2022-12-6</time>
-    <p>再现。</p>
-    <p>图片让画面再现；黑胶、磁带、CD、各种音频文件，让声音再现；视频让影像再现。但我们要怎么理解这件事呢？</p>
-    <p>我们被允许，在另一个时空瞬间，看到另外一个时空瞬间下的事物。我们坐在电影院，我们看到荧幕上的人群！</p>
-  </article>
-
-  <article id="7">
-    <time>2022-12-5</time>
-    <div class="max8">
-      <p>拖延是人的一种行为，作为人：可能会跳起来，可能会捂着脸，又或许突然唱起歌，也就是说，拖延是有作用的。</p>
-      <p>在我看来，拖延是为了躲避焦虑。上周的我就在工作上十分拖延，而焦虑只是暂时被避开了，但实际上是在累积的。所以其实拖延的过程中充满了痛苦...</p>
-      <p>
-        ...远程工作意味着形式上的更加自由，但在内容上，可不一定。我已经远程工作了一个月，远程取消了线下工作时人和人之间的很多连接，很多看似用处不大的连接，现在想来，其实也是有作用的。一些废话、打招呼、经过、开玩笑什么的，是“线下工作”的构成。这是我之前没有料想到的。
-      </p>
-      <p>之前工作时我问东西都比较勤快，但现在我甚至开始憋着，这是为什么？</p>
-    </div>
-  </article>
-
-  <article id="6">
-    <time>2022-12-3</time>
-    <div class="md">
-      <p>昨天听了洪铁基（Hong Chulki）和柳汉吉（Ryu Hankil）的一张 CD <a
-          href="https://erstwhilerecords.bandcamp.com/album/objets-infernaux" target="_blank">《Objets
-          Infernaux》</a>，好啊。<a href="http://www.balloonnneedle.com/chulki.html" target="_blank">Balloon & Needle</a>
-        上面有洪铁基的简介，所以他的名字韩文是홍철기。柳汉吉的韩文是류한길。这里是<a href="http://www.rockbundartmuseum.org/cn/artist/overview/ba7dwz"
-          target="_blank">上海外滩美术馆</a>对洪铁基的简介。上面提到的“气球与针”的网站里有很多乐手的链接，可以花掉你好几个小时了。</p>
-      <p>撒把芥末有一篇关于洪铁基的<a href="https://mp.weixin.qq.com/s/JyE1_XwqytbXj_DFRzqr_Q"
-          target="_blank">《你们都在纪念拉图尔》</a>，里面还提到了2010年写的<a href="https://mp.weixin.qq.com/s/L3FiXURGKS2dFjqTDAMGNA"
-          target="_blank">《首尔当代即兴回顾》</a>，<a
-          href="https://radio-enemy.bandcamp.com/album/old-radio-enemy-002-yan-jun-new-impro-music-and-recent-encounter"
-          target="_blank">敌台002期</a>可听。</p>
-      <img class="max4 b-img" src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/objects-infernaux.jpeg"
-        alt="objects-infernaux" onclick="window.open(this.src)">
-      <p>柳汉吉是 FEN 的成员，颜峻有写一篇采访<a href="https://subjam.org/blog/478"
-          target="_blank">《柳汉吉：“每个哲学家都是合成器”》</a>，撒把芥末微店也有他的小册子<a
-          href="https://weidian.com/fastorder.html?itemID=4450378791&code=041SJuGa1DE5nE0RjdHa1pbrY53SJuGR&state=f2f_pay"
-          target="_blank">《黑暗王子》</a>。访谈里柳汉吉说：“地球就是一个从太空中过滤出来的实体。人类的现实就是经过了带宽过滤的噪音。”，很有意思。</p>
-      <p>柳汉吉主持的 the manual 厂牌应该是不做了，网站（http://www.themanual.co.kr）也不在了。</p>
-      <p>贴一些链接吧：</p>
-      <ul>
-        <li>秦相太（Jin Sangtae）的 <a href="http://www.popmusic25.com/" target="_blank">Popmusic25</a></li>
-        <li><a href="http://www.balloonnneedle.com/joonyongen.html" target="_blank">Choi Joonyong</a></li>
-        <li><a href="http://www.joefoster.blogspot.com/" target="_blank">Joe Foster</a></li>
-        <li><a href="http://www.balloonnneedle.com/seungjunen.html" target="_blank">Park Seungjun</a></li>
-      </ul>
-    </div>
-  </article>
-
-  <article id="5">
-    <time>2022-12-1</time>
-    <p>看到 <a href="https://uqn.life" target="_blank">uqn.life</a> 把网站 logo 换成这个了： <img
-        src="https://cdn.jsdelivr.net/gh/lisx5JP/assets@main/weblog/images/uqn-life.png" alt="uqn.life"
-        onclick="window.open(this.src)"></p>
-  </article>
-
-  <article id="4">
-    <time>2022-11-30</time>
-    <p>11月的最后一天，上海下雪了，江泽民去世了，过去的几天发生了很多事。</p>
-    <p>读了<a href="https://slowcore.org/?p=8" target="_blank">《缓流》</a>。</p>
-  </article>
-
-  <article id="3" style="max-width: 100px;">
-    <time>2022-11-29</time>
-    <p style="background-color: lightgoldenrodyellow;">可以有局部的样式，比如说这里的内容很窄，并且有自己的背景色。</p>
-  </article>
-
-  <article id="2">
-    <time>2022-11-29</time>
-    <p>可以写很短的一小段，短的内容就可以简单地按时间堆起来。</p>
-  </article>
-
-  <article id="1">
-    <time>2022-11-28</time>
-    <p>尝试一下只是 html 文件的 weblog，如果文章较长，可以创建新的 html 文档。 <a href="./posts/sample.html">阅读全文 >></a></p>
-  </article>
-</body>
-
+        place();
+        window.addEventListener("resize", place);
+      })();
+    </script>
+  </body>
 </html>

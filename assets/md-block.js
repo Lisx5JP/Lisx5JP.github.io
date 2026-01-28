@@ -238,7 +238,10 @@ export class MarkdownBlock extends MarkdownElement {
     let content = this._mdContent;
     content = this._removeFrontMatter(content);
     content = this._removeReverseStatusBlock(content);
-    return marked.parse(content);
+    let html = marked.parse(content);
+    html = html.replace(/<br\s*\/?>\s*(<div class="media">)/g, "$1");
+    html = html.replace(/(<\/div>)\s*<br\s*\/?>/g, "$1");
+    return html;
   }
 
   _removeFrontMatter(content) {
@@ -251,6 +254,21 @@ export class MarkdownBlock extends MarkdownElement {
 
   static renderer = Object.assign(
     {
+      paragraph(text) {
+        const trimmed = text.trim();
+        if (!trimmed) {
+          return "";
+        }
+        if (/^<div class="media">[\s\S]*<\/div>$/.test(trimmed)) {
+          return trimmed;
+        }
+        return `<p>${text}</p>`;
+      },
+      image(href, title, text) {
+        const titleAttr = title ? ` title="${title}"` : "";
+        const altAttr = text ? ` alt="${text}"` : "";
+        return `<div class="media"><img src="${href}"${altAttr}${titleAttr}></div>`;
+      },
       heading(text, level, _raw, slugger) {
         level = Math.min(6, level + (this.hmin - 1));
         const id = slugger.slug(text);

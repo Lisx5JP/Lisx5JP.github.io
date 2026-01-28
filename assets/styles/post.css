@@ -69,7 +69,11 @@ h3 {
 
 p {
   line-height: 24px;
-  margin-bottom: 28px;
+  /*margin-bottom: 28px;*/
+}
+
+.media {
+  margin: 16px 0;
 }
 
 time {

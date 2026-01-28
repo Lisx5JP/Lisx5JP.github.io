@@ -1,7 +1,7 @@
 {
   "workbench.colorTheme": "Default Light Modern",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "workbench.tree.renderIndentGuides": "none",
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "default",
   "editor.minimap.enabled": false,
 }

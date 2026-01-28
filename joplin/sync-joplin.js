@@ -162,29 +162,97 @@ function extractSlugAndBody(body) {
   return { slug, body: cleaned };
 }
 
+function removeRedundantAttachmentLabels(content) {
+  if (!content) {
+    return content;
+  }
+  const lines = content.split(/\r?\n/);
+  const output = [];
+  const mediaLabel = /\.(mp3|m4a|wav|ogg|mp4|webm|jpg|jpeg|png|gif|webp|svg)$/i;
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    if (!trimmed) {
+      output.push(line);
+      continue;
+    }
+
+    const next = lines.slice(i + 1).find((candidate) => candidate.trim() !== "");
+    if (!next) {
+      output.push(line);
+      continue;
+    }
+
+    const match = next.trim().match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (match && match[1] === trimmed) {
+      continue;
+    }
+    if (mediaLabel.test(trimmed)) {
+      const nextTrimmed = next.trim();
+      if (
+        nextTrimmed.startsWith('<div class="media">') ||
+        /^!\[[^\]]*?\]\(([^)]+)\)$/.test(nextTrimmed) ||
+        /^\[[^\]]+]\(([^)]+)\)$/.test(nextTrimmed)
+      ) {
+        continue;
+      }
+    }
+
+    output.push(line);
+  }
+
+  return output.join("\n");
+}
+
 function convertMediaLinks(content) {
   if (!content) {
     return content;
   }
-  let updated = content.replace(
-    /(!?\[[^\]]*?\]\(([^)]+?\.(mp3|m4a|wav|ogg))\))/gi,
-    (match, _full, url) => {
-      if (match.startsWith("![")) {
-        return match;
-      }
-      return `<audio controls src="${url}"></audio>`;
-    },
-  );
-  updated = updated.replace(
-    /(!?\[[^\]]*?\]\(([^)]+?\.(mp4|webm|ogg))\))/gi,
-    (match, _full, url) => {
-      if (match.startsWith("![")) {
-        return match;
-      }
-      return `<video controls src="${url}"></video>`;
-    },
-  );
-  return updated;
+  const audioExts = ["mp3", "m4a", "wav", "ogg"];
+  const videoExts = ["mp4", "webm", "ogg"];
+  const lines = content.split(/\r?\n/);
+  const output = [];
+
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const trimmed = line.trim();
+    const match = trimmed.match(/^\[([^\]]*?)\]\(([^)]+?)\)$/);
+    if (!match) {
+      output.push(line);
+      continue;
+    }
+
+    const url = match[2];
+    const extMatch = url.match(/\.([a-z0-9]+)$/i);
+    if (!extMatch) {
+      output.push(line);
+      continue;
+    }
+    const ext = extMatch[1].toLowerCase();
+    const isAudio = audioExts.includes(ext);
+    const isVideo = videoExts.includes(ext);
+    if (!isAudio && !isVideo) {
+      output.push(line);
+      continue;
+    }
+
+    const tag = isAudio
+      ? `<audio controls src="${url}"></audio>`
+      : `<video controls src="${url}"></video>`;
+    const mediaLine = `<div class="media">${tag}</div>`;
+
+    if (output.length > 0 && output[output.length - 1].trim() !== "") {
+      output.push("");
+    }
+    output.push(mediaLine);
+    const nextLine = lines[i + 1];
+    if (nextLine !== undefined && nextLine.trim() !== "") {
+      output.push("");
+    }
+  }
+
+  return output.join("\n");
 }
 
 function buildSource(remote, bucketPath) {
@@ -297,6 +365,7 @@ async function main() {
 
   const usedSlugs = new Set();
   const usedResourceIds = new Set();
+  const indexEntries = [];
   let noteCount = 0;
   let resourceCount = 0;
 
@@ -334,6 +403,7 @@ async function main() {
       return `${assetWebRoot}/${id}${ext || ""}`;
     });
     const withAudio = convertMediaLinks(withLinks);
+    const cleanedBody = removeRedundantAttachmentLabels(withAudio);
 
     const frontMatterLines = [
       "---",
@@ -353,7 +423,14 @@ async function main() {
     const frontMatter = frontMatterLines.join("\n");
 
     const outputPath = path.join(outputDir, `${slug}.md`);
-    await fsp.writeFile(outputPath, `${frontMatter}${withAudio.trim()}\n`);
+    await fsp.writeFile(outputPath, `${frontMatter}${cleanedBody.trim()}\n`);
+    indexEntries.push({
+      title,
+      slug,
+      created,
+      updated,
+      joplin_id: item.id || "",
+    });
     noteCount += 1;
   }
 
@@ -369,6 +446,9 @@ async function main() {
     await fsp.copyFile(src, dest);
     resourceCount += 1;
   }
+
+  const indexPath = path.join(outputDir, "index.json");
+  await fsp.writeFile(indexPath, `${JSON.stringify(indexEntries, null, 2)}\n`);
 
   console.log(`Notes exported: ${noteCount}`);
   console.log(`Resources exported: ${resourceCount}`);

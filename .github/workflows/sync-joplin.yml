@@ -1,0 +1,67 @@
+name: sync-joplin
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # Runs at 00:00 and 12:00 UTC (every 12 hours)
+    - cron: "0 */12 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-joplin
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install rclone
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rclone
+
+      - name: Write .env for sync script
+        shell: bash
+        run: |
+          cat > .env <<'EOF'
+          RCLONE_REMOTE=b2
+          RCLONE_BUCKET_PATH=xingchi-notes
+          RCLONE_TYPE=b2
+          RCLONE_ACCOUNT_ID=${{ secrets.RCLONE_ACCOUNT_ID }}
+          RCLONE_APP_KEY=${{ secrets.RCLONE_APP_KEY }}
+          JOPLIN_SYNC_DIR=.joplin-sync
+          JOPLIN_OUTPUT_DIR=posts/joplin
+          JOPLIN_ASSET_DIR=assets/joplin
+          EOF
+
+      - name: Run sync-joplin
+        run: |
+          node joplin/sync-joplin.js
+
+      - name: Commit and push changes (if any)
+        shell: bash
+        run: |
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "sync joplin ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          git push
+

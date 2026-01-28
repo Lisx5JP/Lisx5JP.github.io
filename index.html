@@ -113,7 +113,17 @@
         const links = Array.from(el.querySelectorAll("a"));
         const pad = 12;
 
-        const place = () => {
+        const randInt = (min, max) => Math.floor(min + Math.random() * (max - min + 1));
+        const sampleN = (arr, n) => {
+          const a = arr.slice();
+          for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+          }
+          return a.slice(0, Math.min(n, a.length));
+        };
+
+        const placeAll = () => {
           const w = el.clientWidth;
           const h = el.clientHeight;
 
@@ -137,8 +147,69 @@
           });
         };
 
-        place();
-        window.addEventListener("resize", place);
+        // Choose 5 links to move automatically (picked randomly each refresh).
+        const moving = sampleN(links, 5);
+        const states = new Map();
+        moving.forEach((a) => {
+          a.dataset.moving = "true";
+          states.set(a, { vx: randInt(-70, 70), vy: randInt(-55, 55), paused: false });
+          a.addEventListener("mouseenter", () => {
+            const s = states.get(a);
+            if (s) s.paused = true;
+          });
+          a.addEventListener("mouseleave", () => {
+            const s = states.get(a);
+            if (s) s.paused = false;
+          });
+        });
+
+        const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+        // Start with a random layout, then animate the chosen 5.
+        placeAll();
+
+        let last = performance.now();
+        const tick = (now) => {
+          const dt = Math.min(0.05, (now - last) / 1000); // cap delta to avoid huge jumps
+          last = now;
+
+          const w = el.clientWidth;
+          const h = el.clientHeight;
+
+          states.forEach((s, a) => {
+            if (s.paused) return;
+
+            // Ensure non-zero velocity so things actually move.
+            if (s.vx === 0) s.vx = 40;
+            if (s.vy === 0) s.vy = -30;
+
+            const aw = a.offsetWidth;
+            const ah = a.offsetHeight;
+            const maxX = Math.max(pad, w - aw - pad);
+            const maxY = Math.max(pad, h - ah - pad);
+
+            let x = parseFloat(a.style.left || "0");
+            let y = parseFloat(a.style.top || "0");
+
+            x += s.vx * dt;
+            y += s.vy * dt;
+
+            if (x <= pad || x >= maxX) s.vx *= -1;
+            if (y <= pad || y >= maxY) s.vy *= -1;
+
+            x = clamp(x, pad, maxX);
+            y = clamp(y, pad, maxY);
+
+            a.style.left = `${x}px`;
+            a.style.top = `${y}px`;
+          });
+
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+
+        // Keep things inside if the viewport changes.
+        window.addEventListener("resize", placeAll);
       })();
     </script>
   </body>

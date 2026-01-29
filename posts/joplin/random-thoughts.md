@@ -1,7 +1,7 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-01-29T08:05:48.176Z"
+updated: "2026-01-29T08:05:58.275Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
@@ -10,8 +10,9 @@ random thoughts
 2026-01-29 09:05
 
 
-![PXL_20260129_080024597.jpg](/assets/joplin/e202218a1efb4ed0ab5dd2c16eb4216d)
+![PXL_20260129_080024597.jpg](/assets/joplin/e202218a1efb4ed0ab5dd2c16eb4216d.jpg)
 
+又下雪了。
 
 2026-01-22 19:19
 

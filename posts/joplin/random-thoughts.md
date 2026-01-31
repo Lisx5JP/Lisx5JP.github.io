@@ -1,11 +1,15 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-01-29T08:05:58.275Z"
+updated: "2026-01-30T17:02:46.954Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-01-30 18:02
+
+下车了，在冷风中走，放了两个屁，有一种我很自由的感觉。
 
 2026-01-29 09:05
 

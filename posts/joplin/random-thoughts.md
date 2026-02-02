@@ -1,11 +1,15 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-01-30T17:02:46.954Z"
+updated: "2026-02-02T08:09:05.918Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-02 09:07
+
+好多窗户。
 
 2026-01-30 18:02
 

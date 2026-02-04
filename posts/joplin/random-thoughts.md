@@ -1,11 +1,21 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-02T08:09:05.918Z"
+updated: "2026-02-03T15:26:28.677Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-03 16:20
+
+科隆18路有轨电车至 Efferen
+
+
+![PXL_20260203_143922392.jpg](/assets/joplin/f0f13f2cd16844ae90e1e4768fe083a3.jpg)
+
+<div class="media"><audio controls src="/assets/joplin/0a3923946c424be09fe4a9cb1f9c8968.mp3"></audio></div>
+
 
 2026-02-02 09:07
 

@@ -1,16 +1,19 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-03T15:26:28.677Z"
+updated: "2026-02-04T23:03:02.181Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
 
+2026-02-04 23:57
+
+我把次卧的地暖打开的话，经过一个白天，晚上我去到里面，我感到温暖包着我。要睡觉了，想起要把它关掉，想到不用过多久，次卧又会变得冷静起来，进到里面，也会感到冷意，温度就这么消散了。
+
 2026-02-03 16:20
 
 科隆18路有轨电车至 Efferen
-
 
 ![PXL_20260203_143922392.jpg](/assets/joplin/f0f13f2cd16844ae90e1e4768fe083a3.jpg)
 

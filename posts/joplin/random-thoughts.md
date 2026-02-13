@@ -1,11 +1,20 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-11T19:50:59.670Z"
+updated: "2026-02-13T00:05:39.083Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-13 01:04
+
+五年前，是2021年，再往前一点，就是2020年。现在是六年后了，2026年。记忆... 
+
+
+
+
+
 
 11/02/2026 20:22
 

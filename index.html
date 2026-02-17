@@ -145,7 +145,11 @@
 
       .slot-track {
         transform: translateY(0);
-        --cat-color: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.1);
+      }
+
+      .slot-track.is-cycling {
+        animation: slot-color-cycle 2.4s steps(1, end) infinite;
       }
 
       .slot-item {
@@ -156,7 +160,22 @@
         font-family: monospace;
         font-size: clamp(20px, 3.1vw, 56px);
         line-height: 0.9;
-        color: var(--cat-color);
+        color: currentColor;
+      }
+
+      @keyframes slot-color-cycle {
+        0%,
+        33.333% {
+          color: var(--c1);
+        }
+        33.334%,
+        66.666% {
+          color: var(--c2);
+        }
+        66.667%,
+        100% {
+          color: var(--c3);
+        }
       }
     </style>
   </head>
@@ -197,6 +216,7 @@
         const box = document.getElementById("links-container");
         const underBelt = document.getElementById("links-under-belt");
         const underBelt2 = document.getElementById("links-under-belt-2");
+        const slotMachine = document.getElementById("slot-machine");
         const tracks = [
           document.getElementById("slot-track-1"),
           document.getElementById("slot-track-2"),
@@ -292,12 +312,6 @@
         ];
 
         const spinReel = (track, reelIndex) => {
-          const hue = (randInt(0, 359) + reelIndex * 120) % 360;
-          const sat = randInt(30, 65);
-          const light = randInt(20, 45);
-          const alpha = rand(0.3, 0.4).toFixed(2);
-          track.style.setProperty("--cat-color", `hsla(${hue} ${sat}% ${light}% / ${alpha})`);
-
           const stopIndex = randInt(0, cats.length - 1);
           const loops = randInt(6, 9);
           const sequence = [];
@@ -333,7 +347,33 @@
           });
         };
 
+        const reelColors = [0, 1, 2].map((idx) => {
+          const hue = (randInt(0, 359) + idx * 120) % 360;
+          const sat = randInt(32, 72);
+          const light = randInt(20, 50);
+          const alpha = rand(0.4, 0.5).toFixed(2);
+          return `hsla(${hue} ${sat}% ${light}% / ${alpha})`;
+        });
+
+        if (slotMachine) {
+          slotMachine.style.setProperty("--c1", reelColors[0]);
+          slotMachine.style.setProperty("--c2", reelColors[1]);
+          slotMachine.style.setProperty("--c3", reelColors[2]);
+        }
+
         tracks.forEach((track, index) => spinReel(track, index));
+
+        tracks.forEach((track, index) => {
+          track.style.color = reelColors[index];
+        });
+
+        const maxSpinSeconds = 2.2 + (tracks.length - 1) * 0.45;
+        window.setTimeout(() => {
+          tracks.forEach((track, index) => {
+            track.style.animationDelay = `${-index * 0.8}s`;
+            track.classList.add("is-cycling");
+          });
+        }, (maxSpinSeconds + 0.15) * 1000);
       })();
     </script>
   </body>

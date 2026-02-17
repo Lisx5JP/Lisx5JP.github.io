@@ -16,6 +16,7 @@
         margin: 0;
         padding: 0;
         display: flex;
+        align-items: center;
       }
 
       .links-container {
@@ -82,6 +83,50 @@
         background: papayawhip;
         font-weight: bold;
       }
+
+      .ascii-cat {
+        flex: 1;
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 0 1.2rem 0 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        perspective: 900px;
+        user-select: none;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .slot-machine {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.55rem;
+        align-items: center;
+      }
+
+      .slot-window {
+        height: min(58vh, 620px);
+        overflow: hidden;
+      }
+
+      .slot-track {
+        transform: translateY(0);
+        --cat-color: rgba(0, 0, 0, 0.1);
+      }
+
+      .slot-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: pre;
+        font-family: monospace;
+        font-size: clamp(20px, 3.1vw, 56px);
+        line-height: 0.9;
+        color: var(--cat-color);
+      }
     </style>
   </head>
 
@@ -106,19 +151,31 @@
       </div>
       <div class="links-row"><a href="./old-index.html">[ old index ]</a></div>
     </div>
+    <div class="ascii-cat" aria-hidden="true">
+      <div class="slot-machine" id="slot-machine">
+        <div class="slot-window"><div class="slot-track" id="slot-track-1"></div></div>
+        <div class="slot-window"><div class="slot-track" id="slot-track-2"></div></div>
+        <div class="slot-window"><div class="slot-track" id="slot-track-3"></div></div>
+      </div>
+    </div>
 
     <script>
       (function () {
         const box = document.getElementById("links-container");
+        const tracks = [
+          document.getElementById("slot-track-1"),
+          document.getElementById("slot-track-2"),
+          document.getElementById("slot-track-3")
+        ];
         if (!box) return;
 
         const rand = (min, max) => min + Math.random() * (max - min);
         const randInt = (min, max) => Math.floor(rand(min, max + 1));
 
         // Keep shape fixed; only color changes on each refresh.
-        const hue = randInt(15, 210);
-        const sat = randInt(58, 80);
-        const light = randInt(60, 74);
+        const hue = randInt(0, 359);
+        const sat = randInt(72, 96);
+        const light = randInt(40, 64);
         box.style.background = `hsl(${hue} ${sat}% ${light}%)`;
 
         // Shuffle link order on each refresh.
@@ -134,6 +191,102 @@
           const deg = rand(-2.6, 2.6);
           row.style.transform = `rotate(${deg.toFixed(2)}deg)`;
         });
+
+        if (tracks.some((t) => !t)) return;
+        const cats = [
+          String.raw` /\_/\
+( o.o )
+ > ^ <`,
+          String.raw` |\__/,|   (\`
+ |_ _  |.--.) )
+ ( T   )     /
+(((^_(((/(((_/`,
+          String.raw` /\     /\
+{  \___/  }
+ {  o o  }
+  \  ^  /
+   |||||`,
+          String.raw`  /\_/\ 
+ ( -.- )
+  > ^ <`,
+          String.raw` /\_/\ 
+( =^.^= )
+ (")_(")`,
+          String.raw` /\_/\  
+( o.o ) 
+ > ^ <  `,
+          String.raw` /\_/\  
+( >w< ) 
+ /   \  `,
+          String.raw` /\_/\ 
+( -_-) 
+ /| |\  `,
+          String.raw` /\_/\   
+( 0.0 )  
+ (___)   `,
+          String.raw` /\_/\     
+(^ . ^)    
+(")_(")    `,
+          String.raw` /\_/\
+(='x'=)
+(")_(")`,
+          String.raw` /\_/\ 
+(=^o^=)
+ /   \ `,
+          String.raw` /\___/\ 
+(  o.o  )
+ >  ^  < `,
+          String.raw`  /\_/\  
+ (='.'=) 
+ (")_(") `,
+          String.raw` /\_/\    
+( -.- )   
+ c(")(")  `
+        ];
+
+        const spinReel = (track, reelIndex) => {
+          const hue = (randInt(0, 359) + reelIndex * 120) % 360;
+          const sat = randInt(30, 65);
+          const light = randInt(20, 45);
+          const alpha = rand(0.3, 0.4).toFixed(2);
+          track.style.setProperty("--cat-color", `hsla(${hue} ${sat}% ${light}% / ${alpha})`);
+
+          const stopIndex = randInt(0, cats.length - 1);
+          const loops = randInt(6, 9);
+          const sequence = [];
+
+          for (let i = 0; i < loops; i++) sequence.push(...cats);
+          for (let i = 0; i <= stopIndex; i++) sequence.push(cats[i]);
+
+          track.innerHTML = "";
+          sequence.forEach((cat) => {
+            const item = document.createElement("div");
+            item.className = "slot-item";
+            item.textContent = cat;
+            track.appendChild(item);
+          });
+
+          const windowEl = track.parentElement;
+          if (!windowEl) return;
+          const itemHeight = windowEl.clientHeight;
+          Array.from(track.children).forEach((child) => {
+            child.style.height = `${itemHeight}px`;
+          });
+
+          track.style.transition = "none";
+          track.style.transform = "translateY(0)";
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              const duration = 2.2 + reelIndex * 0.45;
+              track.style.transition = `transform ${duration}s cubic-bezier(0.13, 0.86, 0.22, 1)`;
+              const travel = (sequence.length - 1) * itemHeight;
+              track.style.transform = `translateY(-${travel}px)`;
+            });
+          });
+        };
+
+        tracks.forEach((track, index) => spinReel(track, index));
       })();
     </script>
   </body>

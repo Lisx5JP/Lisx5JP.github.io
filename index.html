@@ -19,6 +19,35 @@
         align-items: center;
       }
 
+      .belt-stack {
+        position: relative;
+        width: fit-content;
+        height: 100vh;
+        flex: 0 0 auto;
+      }
+
+      .links-under-belt {
+        position: absolute;
+        top: 0;
+        left: -0.45rem;
+        width: calc(100% + 1rem);
+        height: 100vh;
+        z-index: 2;
+        clip-path: polygon(0 0, calc(100% - 4.25rem) 0, 100% 100%, 4.25rem 100%);
+        pointer-events: none;
+      }
+
+      .links-under-belt-2 {
+        position: absolute;
+        top: 0;
+        left: -0.9rem;
+        width: calc(100% + 2rem);
+        height: 100vh;
+        z-index: 1;
+        clip-path: polygon(0 0, calc(100% - 4.9rem) 0, 100% 100%, 4.9rem 100%);
+        pointer-events: none;
+      }
+
       .links-container {
         --belt-shift: 3.6rem;
         --row-step: 0.4rem;
@@ -32,6 +61,8 @@
         justify-content: center;
         background: #dcefd7;
         clip-path: polygon(0 0, calc(100% - var(--belt-shift)) 0, 100% 100%, var(--belt-shift) 100%);
+        position: relative;
+        z-index: 2;
       }
 
       .links-row {
@@ -131,25 +162,27 @@
   </head>
 
   <body>
-    <div class="links-container" id="links-container">
-      <div class="links-row"><a href="./mix.html">mix</a></div>
-      <div class="links-row"><a href="./logs.html">logs</a></div>
-      <div class="links-row">
-        <a href="https://kangaroomurmur.cc" target="_blank" rel="noopener noreferrer">kangaroo murmur</a>
+    <div class="belt-stack">
+      <div class="links-under-belt-2" id="links-under-belt-2" aria-hidden="true"></div>
+      <div class="links-under-belt" id="links-under-belt" aria-hidden="true"></div>
+      <div class="links-container" id="links-container">
+        <div class="links-row"><a href="./mix.html">mix</a></div>
+        <div class="links-row"><a href="./logs.html">logs</a></div>
+        <div class="links-row">
+          <a href="https://kangaroomurmur.cc" target="_blank" rel="noopener noreferrer">kangaroo murmur</a>
+        </div>
+        <div class="links-row"><a href="/posts/joplin/random-thoughts.html">random thoughts</a></div>
+        <div class="links-row"><a href="/photos/">#01</a></div>
+        <div class="links-row">
+          <a href="https://www.youtube.com/@kangaroomurmur/playlists" target="_blank" rel="noopener noreferrer"
+            >YouTube</a
+          >
+        </div>
+        <div class="links-row">
+          <a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+        <div class="links-row"><a href="./old-index.html">[ old index ]</a></div>
       </div>
-      <div class="links-row"><a href="/posts/joplin/random-thoughts.html">random thoughts</a></div>
-      <div class="links-row"><a href="/toy/aes.html">AES Encryption</a></div>
-      <div class="links-row"><a href="/toy/aes-kdf.html">AES KDF Encryption</a></div>
-      <div class="links-row"><a href="/photos/">#01</a></div>
-      <div class="links-row">
-        <a href="https://www.youtube.com/@kangaroomurmur/playlists" target="_blank" rel="noopener noreferrer"
-          >YouTube</a
-        >
-      </div>
-      <div class="links-row">
-        <a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-      <div class="links-row"><a href="./old-index.html">[ old index ]</a></div>
     </div>
     <div class="ascii-cat" aria-hidden="true">
       <div class="slot-machine" id="slot-machine">
@@ -162,6 +195,8 @@
     <script>
       (function () {
         const box = document.getElementById("links-container");
+        const underBelt = document.getElementById("links-under-belt");
+        const underBelt2 = document.getElementById("links-under-belt-2");
         const tracks = [
           document.getElementById("slot-track-1"),
           document.getElementById("slot-track-2"),
@@ -177,6 +212,18 @@
         const sat = randInt(72, 96);
         const light = randInt(40, 64);
         box.style.background = `hsl(${hue} ${sat}% ${light}%)`;
+        if (underBelt) {
+          const underHue = (hue + randInt(12, 68)) % 360;
+          const underSat = randInt(86, 100);
+          const underLight = randInt(28, 48);
+          underBelt.style.background = `hsl(${underHue} ${underSat}% ${underLight}%)`;
+          if (underBelt2) {
+            const underHue2 = (underHue + randInt(14, 54)) % 360;
+            const underSat2 = randInt(90, 100);
+            const underLight2 = randInt(22, 42);
+            underBelt2.style.background = `hsl(${underHue2} ${underSat2}% ${underLight2}%)`;
+          }
+        }
 
         // Shuffle link order on each refresh.
         const rows = Array.from(box.querySelectorAll(".links-row"));

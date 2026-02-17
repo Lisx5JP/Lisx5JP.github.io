@@ -16,198 +16,124 @@
         margin: 0;
         padding: 0;
         display: flex;
-        align-items: center;
+      }
+
+      .links-container {
+        --belt-shift: 3.6rem;
+        --row-step: 0.4rem;
+        width: max-content;
+        max-width: calc(100vw - 1rem);
+        height: 100vh;
+        box-sizing: border-box;
+        padding: 1rem 0.9rem;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-      }
-      a {
-        display: inline;
-        margin: 3em;
-      }
-      a:hover {
-        background: papayawhip;
-        font-weight: bold;
-      }
-      h1 {
-        font: italic 40px/1 sans-serif;
-        margin: 0;
-        text-shadow: 4px 4px #e8e8e8;
-      }
-      marquee {
-        width: 100%;
-      }
-      .tall {
-        height: 25em;
+        background: #dcefd7;
+        clip-path: polygon(0 0, calc(100% - var(--belt-shift)) 0, 100% 100%, var(--belt-shift) 100%);
       }
 
-      /* Keep the "colorful block", but static and light grey (no marquee animation). */
-      #grey-block {
-        background-color: #e3e3e3;
-        border: 1px solid #d0d0d0;
-        position: relative;
-        overflow: hidden;
-        width: 92vw; /* JS will pick a random size within the viewport */
-        height: 80vh;
+      .links-row {
+        margin: -0.08rem 0;
+        transform-origin: left center;
+        will-change: transform;
       }
 
-      /* Links live inside the block and get random absolute positions. */
-      #grey-block a {
-        position: absolute;
-        margin: 0;
+      .links-row:nth-child(1) {
+        margin-left: 0rem;
+      }
+      .links-row:nth-child(2) {
+        margin-left: calc(1 * var(--row-step));
+      }
+      .links-row:nth-child(3) {
+        margin-left: calc(2 * var(--row-step));
+      }
+      .links-row:nth-child(4) {
+        margin-left: calc(3 * var(--row-step));
+      }
+      .links-row:nth-child(5) {
+        margin-left: calc(4 * var(--row-step));
+      }
+      .links-row:nth-child(6) {
+        margin-left: calc(5 * var(--row-step));
+      }
+      .links-row:nth-child(7) {
+        margin-left: calc(6 * var(--row-step));
+      }
+      .links-row:nth-child(8) {
+        margin-left: calc(7 * var(--row-step));
+      }
+      .links-row:nth-child(9) {
+        margin-left: calc(8 * var(--row-step));
+      }
+      .links-row:nth-child(10) {
+        margin-left: calc(9 * var(--row-step));
+      }
+
+      .links-row a {
+        display: inline-block;
         padding: 0.15em 0.35em;
         color: #111;
         text-decoration: none;
         background: rgba(255, 255, 255, 0.75);
       }
+
+      .links-row a:hover {
+        background: papayawhip;
+        font-weight: bold;
+      }
     </style>
   </head>
 
   <body>
-    <div id="grey-block" class="tall">
-      <a href="./mix.html">mix</a>
-      <a href="./logs.html">logs</a>
-      <a href="https://kangaroomurmur.cc" target="_blank" rel="noopener noreferrer">kangaroo murmur</a>
-      <a href="/posts/joplin/random-thoughts.html">random thoughts</a>
-
-      <a href="/toy/aes.html">AES Encryption</a>
-      <a href="/toy/aes-kdf.html">AES KDF Encryption</a>
-
-      <a href="/photos/">#01</a>
-
-      <a
-        href="https://www.youtube.com/@kangaroomurmur/playlists"
-        target="_blank"
-        rel="noopener noreferrer"
-        >YouTube</a
-      >
-      <a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a>
-
-      <a href="./old-index.html">[ old index ]</a>
+    <div class="links-container" id="links-container">
+      <div class="links-row"><a href="./mix.html">mix</a></div>
+      <div class="links-row"><a href="./logs.html">logs</a></div>
+      <div class="links-row">
+        <a href="https://kangaroomurmur.cc" target="_blank" rel="noopener noreferrer">kangaroo murmur</a>
+      </div>
+      <div class="links-row"><a href="/posts/joplin/random-thoughts.html">random thoughts</a></div>
+      <div class="links-row"><a href="/toy/aes.html">AES Encryption</a></div>
+      <div class="links-row"><a href="/toy/aes-kdf.html">AES KDF Encryption</a></div>
+      <div class="links-row"><a href="/photos/">#01</a></div>
+      <div class="links-row">
+        <a href="https://www.youtube.com/@kangaroomurmur/playlists" target="_blank" rel="noopener noreferrer"
+          >YouTube</a
+        >
+      </div>
+      <div class="links-row">
+        <a href="https://www.instagram.com/_xingchi/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+      <div class="links-row"><a href="./old-index.html">[ old index ]</a></div>
     </div>
 
     <script>
       (function () {
-        const el = document.getElementById("grey-block");
-        if (!el) return;
+        const box = document.getElementById("links-container");
+        if (!box) return;
 
-        // Random size on each refresh, clamped so it never causes scrollbars.
-        const vw = window.innerWidth;
-        const vh = window.innerHeight;
-        const maxW = Math.floor(vw * 0.92);
-        const maxH = Math.floor(vh * 0.8);
-        const minW = Math.min(520, maxW);
-        const minH = Math.min(260, maxH);
-        const w = Math.floor(minW + Math.random() * Math.max(0, maxW - minW));
-        const h = Math.floor(minH + Math.random() * Math.max(0, maxH - minH));
-        el.style.width = `${w}px`;
-        el.style.height = `${h}px`;
+        const rand = (min, max) => min + Math.random() * (max - min);
+        const randInt = (min, max) => Math.floor(rand(min, max + 1));
 
-        // New color on each refresh.
-        const hue = Math.floor(Math.random() * 360);
-        const sat = Math.floor(35 + Math.random() * 45); // 35..80
-        const light = Math.floor(72 + Math.random() * 18); // 72..90
-        el.style.backgroundColor = `hsl(${hue} ${sat}% ${light}%)`;
+        // Keep shape fixed; only color changes on each refresh.
+        const hue = randInt(15, 210);
+        const sat = randInt(58, 80);
+        const light = randInt(60, 74);
+        box.style.background = `hsl(${hue} ${sat}% ${light}%)`;
 
-        // Random positions on each refresh (always inside the block).
-        const links = Array.from(el.querySelectorAll("a"));
-        const pad = 12;
+        // Shuffle link order on each refresh.
+        const rows = Array.from(box.querySelectorAll(".links-row"));
+        for (let i = rows.length - 1; i > 0; i--) {
+          const j = randInt(0, i);
+          [rows[i], rows[j]] = [rows[j], rows[i]];
+        }
+        rows.forEach((row) => box.appendChild(row));
 
-        const randInt = (min, max) => Math.floor(min + Math.random() * (max - min + 1));
-        const sampleN = (arr, n) => {
-          const a = arr.slice();
-          for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
-          }
-          return a.slice(0, Math.min(n, a.length));
-        };
-
-        const placeAll = () => {
-          const w = el.clientWidth;
-          const h = el.clientHeight;
-
-          // Reset positions so sizes measure correctly.
-          links.forEach((a) => {
-            a.style.left = "0px";
-            a.style.top = "0px";
-          });
-
-          requestAnimationFrame(() => {
-            links.forEach((a) => {
-              const aw = a.offsetWidth;
-              const ah = a.offsetHeight;
-              const maxX = Math.max(pad, w - aw - pad);
-              const maxY = Math.max(pad, h - ah - pad);
-              const x = pad + Math.random() * Math.max(0, maxX - pad);
-              const y = pad + Math.random() * Math.max(0, maxY - pad);
-              a.style.left = `${x}px`;
-              a.style.top = `${y}px`;
-            });
-          });
-        };
-
-        // Choose 5 links to move automatically (picked randomly each refresh).
-        const moving = sampleN(links, 5);
-        const states = new Map();
-        moving.forEach((a) => {
-          a.dataset.moving = "true";
-          states.set(a, { vx: randInt(-70, 70), vy: randInt(-55, 55), paused: false });
-          a.addEventListener("mouseenter", () => {
-            const s = states.get(a);
-            if (s) s.paused = true;
-          });
-          a.addEventListener("mouseleave", () => {
-            const s = states.get(a);
-            if (s) s.paused = false;
-          });
+        // Give each row a slightly different angle (< 3deg).
+        rows.forEach((row) => {
+          const deg = rand(-2.6, 2.6);
+          row.style.transform = `rotate(${deg.toFixed(2)}deg)`;
         });
-
-        const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-
-        // Start with a random layout, then animate the chosen 5.
-        placeAll();
-
-        let last = performance.now();
-        const tick = (now) => {
-          const dt = Math.min(0.05, (now - last) / 1000); // cap delta to avoid huge jumps
-          last = now;
-
-          const w = el.clientWidth;
-          const h = el.clientHeight;
-
-          states.forEach((s, a) => {
-            if (s.paused) return;
-
-            // Ensure non-zero velocity so things actually move.
-            if (s.vx === 0) s.vx = 40;
-            if (s.vy === 0) s.vy = -30;
-
-            const aw = a.offsetWidth;
-            const ah = a.offsetHeight;
-            const maxX = Math.max(pad, w - aw - pad);
-            const maxY = Math.max(pad, h - ah - pad);
-
-            let x = parseFloat(a.style.left || "0");
-            let y = parseFloat(a.style.top || "0");
-
-            x += s.vx * dt;
-            y += s.vy * dt;
-
-            if (x <= pad || x >= maxX) s.vx *= -1;
-            if (y <= pad || y >= maxY) s.vy *= -1;
-
-            x = clamp(x, pad, maxX);
-            y = clamp(y, pad, maxY);
-
-            a.style.left = `${x}px`;
-            a.style.top = `${y}px`;
-          });
-
-          requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-
-        // Keep things inside if the viewport changes.
-        window.addEventListener("resize", placeAll);
       })();
     </script>
   </body>

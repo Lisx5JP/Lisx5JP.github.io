@@ -1,11 +1,23 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-13T00:05:39.083Z"
+updated: "2026-02-16T16:20:44.991Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-16 14:08
+
+三十了，刷着朋友圈的年夜饭，吃着 jumbo 买的 pokebowl。
+
+，
+最近用 codex 写代码，刚开始用的时候，觉得很丝滑，因为没有 kilo 那种频繁的工具调用错误。用到现在我已经逐渐放弃了用 kilo 时那种一步一检查的方式，基本上 codex 写，我只是象征性地检查一下结果。我离「写」这个行为越来越远了。去年年初我看到 ai 一次生成一堆代码，当时决定不能再依赖手写了。现在，现在我在想，程序员... 听起来有些牵强了。
+
+，
+朋友圈很多新年内容，但还是这个最好 https://mp.weixin.qq.com/s/xWsbP61DqV0WZK4-bmaKow
+
+
 
 2026-02-13 01:04
 

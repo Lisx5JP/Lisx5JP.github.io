@@ -1,11 +1,17 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-16T16:20:44.991Z"
+updated: "2026-02-19T08:04:34.494Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-19 09:03
+
+视力下降了，最近看显示屏看电脑隔一会就会觉得模糊。
+
+
 
 2026-02-16 14:08
 

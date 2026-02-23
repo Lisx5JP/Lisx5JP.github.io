@@ -1,11 +1,18 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-19T08:04:34.494Z"
+updated: "2026-02-22T21:42:36.714Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-22 22:41
+
+这个车站的名字竟然叫 1e C. Huygensstraat。
+
+
+
 
 2026-02-19 09:03
 

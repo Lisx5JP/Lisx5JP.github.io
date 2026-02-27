@@ -1,11 +1,17 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-22T21:42:36.714Z"
+updated: "2026-02-26T20:45:25.042Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-26 21:44
+
+看了个电影 un poeta，想起朋友圈看到的一句话：「原来我的悲伤那么大」。
+
+
 
 2026-02-22 22:41
 

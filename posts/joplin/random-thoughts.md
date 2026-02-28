@@ -1,11 +1,17 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-02-26T20:45:25.042Z"
+updated: "2026-02-27T16:17:21.635Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-02-27 17:15
+
+到 van der madeweg，一出 metro 车厢，啊额，一股粪味。施肥的季节了？而且竟然还在用粪。
+
+
 
 2026-02-26 21:44
 

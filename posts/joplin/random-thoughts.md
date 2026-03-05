@@ -1,11 +1,18 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-03-03T23:52:39.538Z"
+updated: "2026-03-05T11:36:43.385Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-03-05 12:35
+
+坐德铁前总是压力巨大，怕延误之类的，也不敢买换乘方案，结果今天看到这个 https://bahn.bet/ 哈哈。
+
+
+
 
 2026-03-04 00:50
 

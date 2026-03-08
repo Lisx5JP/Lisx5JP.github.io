@@ -1,7 +1,7 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-03-07T10:55:47.199Z"
+updated: "2026-03-07T12:57:40.324Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
@@ -10,6 +10,10 @@ random thoughts
 2026-03-07 11:55
 
 这几天海德堡的空气并不是很好，有点霾。
+
+，
+gpt 和我说海德堡建筑物的红色来自于 Neckartäler Sandstein（内卡河谷红砂岩），就地取材。
+
 
 
 

@@ -1,11 +1,27 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-03-07T12:57:40.324Z"
+updated: "2026-03-08T17:27:55.841Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-03-08 18:23
+
+走在 Kurpfälzischen Museums（普法尔茨博物馆）的某些房间里，因为日照的原因，会觉得暖暖的，然后刚好房间并不是大得夸张，就很容易想象几百年前确实是有人住在这里的。这么说是因为去过一些更大的王室宫殿之类的，太大，以至于没法想怎么在里面展开生活。
+
+旁边有一个当代展，现场很舒服，声音也很舒服，所有东西都刚刚好...
+
+![PXL_20260308_132917032.MP.jpg](/assets/joplin/4bda0f31b9e54d059ccb1d71969b7e51.jpg)
+
+录了一小段声音，
+
+<div class="media"><audio controls src="/assets/joplin/ab8dfdbc557a4a8dbea4f8c5bf94609e.mp3"></audio></div>
+
+
+
+
 
 2026-03-07 11:55
 

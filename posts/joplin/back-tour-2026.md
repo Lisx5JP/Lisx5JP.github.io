@@ -1,11 +1,40 @@
 ---
 title: "back-tour-2026"
 slug: "back-tour-2026"
-updated: "2026-04-23T15:14:08.518Z"
+updated: "2026-04-26T08:22:21.348Z"
 created: "2026-04-17T23:26:54.831Z"
 joplin_id: "25d28435d7f3424f971a4618e929ea6f"
 ---
 back-tour-2026
+
+2026-04-26 16:19
+
+“来也匆匆，去也冲冲。”
+
+
+
+2026-04-24 13:10
+
+广元的山上开始柏树多起来了，相比于汉中那边。
+
+
+高效，高速，高楼。
+
+
+，
+和尚念经，念到瞌睡。
+
+<div class="media"><audio controls src="/assets/joplin/0d6b5cc709fa4341bdd0d4782a98e72b.mp3"></audio></div>
+
+![PXL_20260425_054501225.jpg](/assets/joplin/f5833c086eb943b1b83e99e01678a7dc.jpg)
+
+
+
+
+
+
+
+
 
 2026-04-23 23:11
 

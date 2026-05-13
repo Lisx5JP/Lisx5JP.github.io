@@ -1,11 +1,25 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-04-09T16:17:54.997Z"
+updated: "2026-05-12T20:25:15.214Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-05-12 22:24
+
+明天要上班了，从下午玩手机，在微信看短视频到现在。大概心理上是
+
+
+
+
+
+
+
+
+
+
 
 2026-04-09 18:16
 

@@ -1,11 +1,24 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-06-10T11:33:55.502Z"
+updated: "2026-06-12T12:33:19.844Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+2026-06-12 14:31
+
+大概两点到两点七分之间，在 Köln Hbf 的 Lovisa 首饰店打了两个耳垂的耳洞。今天是，2026年6月12号。只希望不要感染之类的
+
+
+
+
+
+
+
+
+
 
 2026-06-10 13:33
 

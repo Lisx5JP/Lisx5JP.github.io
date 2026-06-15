@@ -1,7 +1,7 @@
 ---
 title: "love-practicing"
 slug: "love-practicing"
-updated: "2026-06-14T18:26:10.339Z"
+updated: "2026-06-14T18:26:13.101Z"
 created: "2026-06-14T11:32:40.922Z"
 joplin_id: "e651891d834d46a4b58c3539345b4519"
 ---
@@ -17,7 +17,8 @@ love-practicing
 
 
 ，
-在普陀的时候小贾貌似是最开心的时候，那也是在一起的第二年，因为她做了很多次饭。我那会已经结束了和 lyric 共事，在 coinmart 开始远程
+在普陀的时候小贾貌似是最开心的时候，那也是在一起的第二年，因为她做了很多次饭。我那会已经结束了和 lyric 共事，在 coinmart 开始远程工作了。
+
 
 
 

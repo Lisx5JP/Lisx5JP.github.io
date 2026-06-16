@@ -1,11 +1,21 @@
 ---
 title: "love-practicing"
 slug: "love-practicing"
-updated: "2026-06-14T18:26:13.101Z"
+updated: "2026-06-15T15:31:17.241Z"
 created: "2026-06-14T11:32:40.922Z"
 joplin_id: "e651891d834d46a4b58c3539345b4519"
 ---
 love-practicing
+
+2026-06-15 17:30
+
+不迎难而上，做软弱的胆小鬼可以吗。
+
+
+
+
+
+
 
 2026-06-14 19:59
 

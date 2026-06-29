@@ -1,11 +1,30 @@
 ---
 title: "love-practicing"
 slug: "love-practicing"
-updated: "2026-06-24T22:19:34.083Z"
+updated: "2026-06-28T21:03:57.513Z"
 created: "2026-06-14T11:32:40.922Z"
 joplin_id: "e651891d834d46a4b58c3539345b4519"
 ---
 love-practicing
+
+
+2026-06-28 23:02
+
+今天订阅了，Cineville 的卡，看了一部电影，backrooms，大概可以给四星？昨天和前天分别去了 sixin 学校的毕业展，还有 Yale 在 enter enter 的毕业展，这两个活动都更偏向于大型社交活动。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 2026-06-24 23:27
 

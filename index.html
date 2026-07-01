@@ -55,7 +55,7 @@
         max-width: calc(100vw - 1rem);
         height: 100vh;
         box-sizing: border-box;
-        padding: 1rem 0.9rem;
+        padding: 1rem calc(0.9rem + var(--belt-shift) / 4);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -112,7 +112,7 @@
 
       .links-row a:hover {
         background: papayawhip;
-        font-weight: bold;
+        text-shadow: 0 0 0.4px currentColor, 0 0 0.4px currentColor;
       }
 
       .ascii-cat {
@@ -141,6 +141,18 @@
       .slot-window {
         height: min(58vh, 620px);
         overflow: hidden;
+      }
+
+      @media (max-width: 600px) {
+        .slot-machine {
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(3, minmax(0, 1fr));
+          gap: 0.3rem;
+        }
+
+        .slot-window {
+          height: min(28vh, 220px);
+        }
       }
 
       .slot-track {
@@ -305,9 +317,27 @@
           String.raw`  /\_/\  
  (='.'=) 
  (")_(") `,
-          String.raw` /\_/\    
-( -.- )   
- c(")(")  `
+          String.raw` /\_/\
+( -.- )
+ c(")(")  `,
+          String.raw` /\_/\
+( ~.~ )
+ (")(") `,
+          String.raw`  /\_/\
+ ( u.u )
+  >   <  `,
+          String.raw` /\_/\
+( *.* )
+ (")_(")`,
+          String.raw` /\_/\
+(  -  )
+ /  |  \ `,
+          String.raw` /\_/\
+( ._. )
+ (")-(")`,
+          String.raw`  /\_/\
+ ( ^.~ )
+  (")(") `
         ];
 
         const spinReel = (track, reelIndex) => {

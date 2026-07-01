@@ -240,18 +240,18 @@
 
         // Keep shape fixed; only color changes on each refresh.
         const hue = randInt(0, 359);
-        const sat = randInt(72, 96);
-        const light = randInt(40, 64);
+        const sat = randInt(85, 100);
+        const light = randInt(52, 68);
         box.style.background = `hsl(${hue} ${sat}% ${light}%)`;
         if (underBelt) {
-          const underHue = (hue + randInt(12, 68)) % 360;
-          const underSat = randInt(86, 100);
-          const underLight = randInt(28, 48);
+          const underHue = (hue + randInt(50, 130)) % 360;
+          const underSat = randInt(90, 100);
+          const underLight = randInt(45, 58);
           underBelt.style.background = `hsl(${underHue} ${underSat}% ${underLight}%)`;
           if (underBelt2) {
-            const underHue2 = (underHue + randInt(14, 54)) % 360;
+            const underHue2 = (underHue + randInt(50, 130)) % 360;
             const underSat2 = randInt(90, 100);
-            const underLight2 = randInt(22, 42);
+            const underLight2 = randInt(38, 50);
             underBelt2.style.background = `hsl(${underHue2} ${underSat2}% ${underLight2}%)`;
           }
         }

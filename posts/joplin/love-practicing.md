@@ -1,11 +1,30 @@
 ---
 title: "love-practicing"
 slug: "love-practicing"
-updated: "2026-06-29T11:43:23.401Z"
+updated: "2026-07-01T22:43:56.326Z"
 created: "2026-06-14T11:32:40.922Z"
 joplin_id: "e651891d834d46a4b58c3539345b4519"
 ---
 love-practicing
+
+
+2026-07-02 00:42
+
+从有爱意的眼神，到慢慢不耐烦反感，这期间需要发生多少事情？
+How many things need to happen between loving eyes and gradually becoming impatient and disgusted?
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 2026-06-29 13:34

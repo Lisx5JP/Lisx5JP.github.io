@@ -1,11 +1,24 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-08-08T15:03:34.276Z"
+updated: "2026-08-09T11:18:05.309Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+
+
+2026-08-09 13:17
+
+昨晚应该是做了好几个噩梦，为什么？噩梦让人焦躁难受。
+
+
+
+
+
+
+
 
 
 

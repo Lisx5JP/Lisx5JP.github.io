@@ -1,11 +1,26 @@
 ---
 title: "random thoughts"
 slug: "random-thoughts"
-updated: "2026-08-10T22:01:42.993Z"
+updated: "2026-08-12T17:56:17.012Z"
 created: "2026-01-22T18:19:10.710Z"
 joplin_id: "bb8ecfdee4b24897b2741b4c48705f53"
 ---
 random thoughts 
+
+
+2026-08-12 19:55
+
+过去的两个月，自己做饭时，只会用盐和黑胡椒，今天我尝试加一些别的调料，这样味道就肯定会有变化。
+
+
+
+
+
+
+
+
+
+
 
 
 
